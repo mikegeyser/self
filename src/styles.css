@@ -9,3 +9,28 @@ h3,
 h4 {
   font-family: "Indie Flower", cursive;
 }
+
+#profile-picture {
+  height: 20em;
+  width: 20em;
+  overflow: hidden;
+  border-radius: 20em;
+  float: left;
+  position: relative;
+}
+
+#profile-picture svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: opacity 500ms linear;  
+}
+
+#profile-picture img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: opacity 500ms linear;  
+}

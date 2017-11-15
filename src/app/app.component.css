@@ -10,12 +10,6 @@
   margin: 0 0.5em;
 }
 
-:host img {
-  height: 20em;
-  border-radius: 20em;
-  float: left;
-}
-
 :host div.paragraph {
   display: block;
   float: left;
