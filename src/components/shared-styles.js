@@ -8,10 +8,9 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
-export const SharedStyles = html`
-<style>
+export const SharedStyles = css`
   :host {
     display: block;
     box-sizing: border-box;
@@ -19,27 +18,23 @@ export const SharedStyles = html`
 
   section {
     padding: 24px;
+    background: var(--app-section-odd-color);
+  }
+
+  section > * {
     max-width: 1000px;
     margin-right: auto;
     margin-left: auto;
-    background: var(--app-section-odd-color);
+  }
+
+  section:nth-of-type(even) {
+    background: var(--app-section-even-color);
   }
 
   h2 {
     font-size: 24px;
     text-align: center;
     color: var(--app-dark-text-color);
-  }
-
-  body {
-    font-family: "Roboto", sans-serif;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: "Indie Flower", sans-serif;
   }
 
   @media (min-width: 460px) {
@@ -60,5 +55,4 @@ export const SharedStyles = html`
     font-size: 30px;
     line-height: 64px;
   }
-</style>
 `;
