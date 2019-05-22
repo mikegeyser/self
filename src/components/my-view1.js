@@ -20,7 +20,7 @@ const styles = css`
   .container {
     margin-top: 1em;
   }
-  
+
   .profile-picture {
     height: 20em;
     width: 20em;
@@ -53,7 +53,7 @@ const styles = css`
 
   div.paragraph {
     float: left;
-    width: 30em;
+    width: 35em;
     margin-left: 2em;
     padding: 0;
     text-align: justify;
@@ -79,15 +79,22 @@ class MyView1 extends PageViewElement {
               Hi, I'm Mike!
             </h1>
             <p>
-              I’m a Tech Lead at BBD in the R&D team, specialising on designing and building for the
-              web. I’ve been hacking on the web since Geocities was a thing, have a long-lived love
-              affair with JavaScript, and have (almost) come to terms with the fact that I will
-              never have a programmer beard. I have been working as a professional software
-              developer for over 12 years. While I have worked on some interesting large-scale
-              enterprise applications, it is the challenges of the public web that really appeal to
-              me - having earned my stripes on high volume transactional websites. I work primarily
-              in JavaScript, C# and Java, and have shipped production applications in a variety of
-              frameworks.
+              I’m a Google Developer Expert in Web Technologies from Johannesburg, South Africa,
+              where I work in the R&D team at a company called BBD. I am a co-organiser of the
+              Jozi.JS meetup group, and a frequent technical speaker. I have been hacking on the web
+              since Geocities was a 'thing', and have the keening wail of dialup modem etched into
+              my subconscious.
+            </p>
+            <p>
+              While I am fluent in several ‘golden hammer’ programming languages, I have a
+              long-lived love affair with JavaScript, and cannot see its (many, obvious) flaws. I
+              have worked on lots of interesting enterprise applications, but it is the challenges
+              of the public web that really appeal to me - having spent my formative years building
+              transactional websites.
+            </p>
+            <p>
+              I am always eager to talk about the web platform, but be warned, I am prone to
+              hyperbole.
             </p>
 
             <a href="https://twitter.com/mikegeyser/">@mikegeyser</a>
