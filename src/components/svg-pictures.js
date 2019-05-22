@@ -1,6 +1,6 @@
-import { html } from '@polymer/lit-element';
+import { svg } from '@polymer/lit-element';
 
-export const profilePicture = html`
+export const profilePicture = svg`
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
     <g id="profile-picture-def">
         <rect fill="#ab9f93" />
