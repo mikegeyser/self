@@ -49,6 +49,7 @@ const styles = css`
   h1 {
     font-size: 4em;
     margin: 1em 0 0.5em 0;
+    font-family: var(--app-heading-font);
   }
 
   div.paragraph {
