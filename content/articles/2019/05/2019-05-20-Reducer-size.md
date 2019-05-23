@@ -9,7 +9,7 @@ Redux is not the 'new hotness'.
 
 In fact, that it's probably quite far along the downward slope of the technology [hype cycle](https://en.wikipedia.org/wiki/Hype_cycle). As far as state management for your average website goes, it's total overkill, as it introduces a lot of additional complexity for little concrete benefit. The learning curve is extremely steep, and you quickly feel like you're writing a lot of boiler-plate code to accomplish something trivial. Even its creator, Dan Ambramov, [cautions one against ](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367) blindly smashing redux into everything. In spite of these reasons, I have fallen in love with Redux. I am enamoured with the concept of 'Flux' architecture, as well as the lightweight implementation of the framework itself.
 
-You have to understand that I come from a background of building scalable, transactional web applications, where performance and robustness are the highest priorities. These systems invariably led away from 'conventional' architectural models into 'event-based', functional (perhaps more _function-ish_) and distributed system models (queue-based / streaming / event sourced / whatever). A lot of the concepts that Redux is reliant on I feel come directly from this event-based world, or at the very least, I feel that a lot of the metaphors fit neatly into my mental model of how such systems work. Redux gives my the architectural constructs that I feel I need to turn the front end into just another node in a larger distributed, event-based system. It allows you to solve interesting problems, in interesting ways.
+You have to understand that I come from a background of building scalable, transactional web applications, where performance and robustness are the highest priorities. These systems invariably led away from 'conventional' architectural models into 'event-based', functional (perhaps more _function-ish_) and distributed system models (queue-based / streaming / event sourced / whatever). A lot of the concepts that Redux is reliant on I feel come directly from this event-based world, or at the very least, I feel that a lot of the metaphors fit neatly into my mental model of how such systems work. Redux gives me the architectural constructs that I feel I need to turn the front end into just another node in a larger distributed, event-based system. It allows one to solve interesting problems, in interesting ways.
 
 Excitement aside, this is not simply a love letter to Redux. There are many significant challenges to working with Redux, particularly if you approach it naively. It still has an incredibly steep learning curve, and a number of 'easy to stumble into' problems. Needless to say, I have stumbled into some of these problems, and I'd like to share some of my learnings.
 
@@ -84,7 +84,7 @@ When I looked at data structured like this, I represented this as a JSON tree wi
 }
 ```
 
-I could then take an incredibly simple assumption with me reducer, and deal with these two trees as being objects on the state.
+I could then take an incredibly simple assumption with the reducer, and deal with these two trees as being objects on the state.
 
 ```js
 export const tracks = (state = [], action) => {
@@ -197,6 +197,8 @@ So instead of directly translating the relational structure into an object struc
   ]
 }
 ```
+
+And then respresent the user data, in a seperate request, as:
 
 ```json
 {
