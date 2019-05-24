@@ -9,6 +9,7 @@ import { getMarkdown } from '../services/content.service.js';
 import { convertMarkdownToHtml } from '../services/markdown.service.js';
 
 const styles = css`
+
   h1,
   h2,
   h3,
@@ -17,14 +18,29 @@ const styles = css`
   h6 {
     font-family: var(--app-heading-font);
     text-align: left;
+    margin: 0;
+    padding: 8px;
   }
 
   h2 {
     font-size: 32pt;
+    margin-bottom: 0.1em;
   }
 
   h3 {
-    font-size: 24pt;
+    font-size: 26pt;
+    margin-top: 1em;
+  }
+
+  time {
+    font-style: italic;
+    padding: 8px;
+  }
+
+  p {
+    font-size: 15pt;
+    line-height: 19pt;
+    text-align: justify;
   }
 `;
 
@@ -51,7 +67,8 @@ class Article extends connect(store)(PageViewElement) {
           <header>
             <h2>${article.title}</h2>
           </header>
-          <time datetime="${article.date}">${article.date}</time>
+          <time datetime="${article.date}">Originally written on ${article.date}. </time>
+          <time datetime="${article.date}">Revised on ${article.date}</time>
 
           ${content}
         </article>
