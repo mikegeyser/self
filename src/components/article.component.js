@@ -18,6 +18,14 @@ const styles = css`
     font-family: var(--app-heading-font);
     text-align: left;
   }
+
+  h2 {
+    font-size: 32pt;
+  }
+
+  h3 {
+    font-size: 24pt;
+  }
 `;
 
 class Article extends connect(store)(PageViewElement) {

@@ -56,7 +56,7 @@ class MyApp extends connect(store)(LitElement) {
           --app-light-text-color: white;
           --app-section-even-color: #f7f7f7;
           --app-section-odd-color: white;
-          --app-heading-font: 'Indie Flower', cursive;
+          --app-heading-font: 'Indie Flower', sans-serif;
 
           --app-header-background-color: white;
           --app-header-text-color: var(--app-dark-text-color);

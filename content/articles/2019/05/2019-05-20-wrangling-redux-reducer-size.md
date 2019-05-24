@@ -325,6 +325,6 @@ export const selectTrackProgress = createSelector(
 );
 ```
 
-While they're not perfect, I believe that its much improved. We now have a set of composeable, memoised functions that circumvented a lot of the problems in the previous example. Each individual selector is a simple function, or has a simple result function, that can be understood and tested in isolation. Without memoisation it is still not very performant code, but considering that Redux is built on a foundation of it, I feel that's a reasonable assumption to make.
+While they're not perfect, I believe that it's much improved. We now have a set of composeable, memoised functions that circumvented a lot of the problems in the previous example. Each individual selector is a simple function, or has a simple result function, that can be understood and tested in isolation. Without memoisation it is still not very performant code, but considering that Redux is built on a foundation of it, I feel that's a reasonable assumption to make.
 
 ### Conclusion.

@@ -20,7 +20,7 @@ export const convertMarkdownToHtml = (markdown, path, languages) => {
   return element;
 };
 
-export const highlightCode = (element, languages = []) => {
+export const highlightCode = async (element, languages = []) => {
   Promise.all([
     import('prismjs'),
     ...languages.map((language) => import(`/node_modules/prismjs/components/prism-${language}.js`))
