@@ -2,12 +2,14 @@
   "entrypoint": "index.html",
   "shell": "src/components/my-app.js",
   "sources": [
-    "images/**/*"
+    "images/**/*",
+    "content/**/*"
   ],
   "extraDependencies": [
     "manifest.json",
     "node_modules/@webcomponents/webcomponentsjs/**",
-    "push-manifest.json"
+    "node_modules/prismjs/**",
+    "node_modules/showdown/dist/showdown.js"
   ],
   "builds": [
     {

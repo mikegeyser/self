@@ -62,7 +62,7 @@ const styles = css`
   }
 `;
 
-class MyView1 extends PageViewElement {
+class Home extends PageViewElement {
   static get styles() {
     return [SharedStyles, styles];
   }
@@ -106,4 +106,4 @@ class MyView1 extends PageViewElement {
   }
 }
 
-window.customElements.define('my-view1', MyView1);
+window.customElements.define('m-home', Home);

@@ -16,7 +16,7 @@ export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 
 export const navigate = (path) => (dispatch) => {
   // Extract the page name from path.
-  const page = path === '/' ? 'view1' : path.slice(1);
+  const page = path === '/' ? 'home' : path.slice(1);
 
   // Any other info you might want to extract from the path (like page type),
   // you can do here
@@ -27,31 +27,45 @@ export const navigate = (path) => (dispatch) => {
 };
 
 const loadPage = (page) => (dispatch) => {
-  switch(page) {
-    case 'view1':
-      import('../components/my-view1.js').then((module) => {
-        // Put code in here that you want to run every time when
-        // navigating to view1 after my-view1.js is loaded.
-      });
-      break;
-    case 'view2':
-      import('../components/my-view2.js');
-      break;
-    case 'view3':
-      import('../components/my-view3.js');
-      break;
-    default:
-      page = 'view404';
-      import('../components/my-view404.js');
+  const rootPath = /$^/;
+  const homePath = /home/;
+  const articlesPath = /articles/;
+  const articlePath = /article\/(.[^\/]+)$/;
+
+  let match;
+  let routeData = () => (match.length > 1 ? match.slice(1) : null);
+
+  if ((match = page.match(homePath)) || (match = page.match(rootPath))) {
+    import('../components/home.component.js');
+    dispatch(updatePage('home', routeData()));
+  } else if ((match = page.match(articlesPath))) {
+    import('../components/articles.component.js');
+    dispatch(updatePage('articles', routeData()));
+  } else if ((match = page.match(articlePath))) {
+    import('../components/article.component.js');
+    dispatch(updatePage('article', routeData()));
+  } else {
+    page = 'view404';
+    import('../components/my-view404.js');
+    dispatch(updatePage(page));
   }
 
-  dispatch(updatePage(page));
+  if (window.ga) {
+    window.ga('set', 'page', page);
+  }
+
+  // Scroll to the top of the screen.
+  window.scroll({
+    top: 0,
+    left: 0
+  });
 };
 
-const updatePage = (page) => {
+const updatePage = (page, routeData) => {
   return {
     type: UPDATE_PAGE,
-    page
+    page,
+    routeData
   };
 };
 
@@ -62,8 +76,7 @@ export const showSnackbar = () => (dispatch) => {
     type: OPEN_SNACKBAR
   });
   window.clearTimeout(snackbarTimer);
-  snackbarTimer = window.setTimeout(() =>
-    dispatch({ type: CLOSE_SNACKBAR }), 3000);
+  snackbarTimer = window.setTimeout(() => dispatch({ type: CLOSE_SNACKBAR }), 3000);
 };
 
 export const updateOffline = (offline) => (dispatch, getState) => {

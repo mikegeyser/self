@@ -2,9 +2,11 @@
   "articles": [
     {
       "date": "2019/05/20",
-      "title": "wrangling-redux-reducer-size",
-      "summary": "Redux is not the 'new hotness'. In fact, that it's probably quite far along the downward slope of the technology [hype cycle](https://en.wikipedia.org/wiki/Hype_cycle). As far as state management for your average website goes, it's total overkill, as it introduces a lot of additional complexity for little concrete benefit.",
-      "path": "2019-05-20-wrangling-redux-reducer-size.md"
+      "key": "wrangling-redux-reducer-size",
+      "title": "Wrangling Redux: reducer size",
+      "path": "/content/articles/2019/05/2019-05-20-wrangling-redux-reducer-size.md",
+      "image": null,
+      "summary": "Redux is not the 'new hotness'. In fact, that it's probably quite far along the downward slope of the technology hype cycle. As far as state management for your average website goes, it's total overkill, as it introduces a lot of additional complexity for little concrete benefit. As far as state management for your average website goes, it's total overkill, as it introduces a lot of additional complexity for little concrete benefit. The learning curve is extremely steep, and you quickly feel like you're writing a lot of boiler-plate code to accomplish something trivial."
     }
   ],
   "talks": []

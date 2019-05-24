@@ -1,0 +1,1 @@
+export const selectKey = (state) => state.app.routeData[0];

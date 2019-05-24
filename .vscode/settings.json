@@ -1,0 +1,11 @@
+{
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "javascript": "html"
+  },
+  "prettier.stylelintIntegration": true,
+  "prettier.singleQuote": true,
+  "prettier.arrowParens": "always",
+  "prettier.printWidth": 120,
+  "lit-html.format.enabled": false
+}
