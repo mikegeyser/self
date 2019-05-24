@@ -253,7 +253,7 @@ class MyApp extends connect(store)(LitElement) {
 
   updated(changedProps) {
     if (changedProps.has('_page')) {
-      const pageTitle = this.appTitle + ' - ' + this._page;
+      const pageTitle = '// mikerambl.es - ' + this._page;
       updateMetadata({
         title: pageTitle,
         description: pageTitle

@@ -7,9 +7,9 @@ import { selectArticle, selectMarkdown } from '../selectors/article.selectors';
 import { SharedStyles } from './shared-styles.js';
 import { getMarkdown } from '../services/content.service.js';
 import { convertMarkdownToHtml } from '../services/markdown.service.js';
+import { updateMetadata } from 'pwa-helpers/metadata';
 
 const styles = css`
-
   h1,
   h2,
   h3,
@@ -34,10 +34,11 @@ const styles = css`
 
   time {
     font-style: italic;
-    padding: 8px;
+    padding: 0 0 0 8px;
   }
 
-  p {
+  p,
+  li {
     font-size: 15pt;
     line-height: 19pt;
     text-align: justify;
@@ -67,9 +68,7 @@ class Article extends connect(store)(PageViewElement) {
           <header>
             <h2>${article.title}</h2>
           </header>
-          <time datetime="${article.date}">Originally written on ${article.date}. </time>
-          <time datetime="${article.date}">Revised on ${article.date}</time>
-
+          <time datetime="${article.date}">Originally written on ${article.date}. Revised on ${article.date}</time>
           ${content}
         </article>
       </section>
@@ -79,6 +78,12 @@ class Article extends connect(store)(PageViewElement) {
   updated(changedProperties) {
     if (changedProperties.has('article') && this.article) {
       getMarkdown(this.article.path);
+
+      const pageTitle = this.article.title + ' // mikerambl.es';
+      updateMetadata({
+        title: pageTitle,
+        description: pageTitle
+      });
     }
   }
 
