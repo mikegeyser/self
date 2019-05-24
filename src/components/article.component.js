@@ -36,6 +36,8 @@ class Article extends connect(store)(PageViewElement) {
     let { article, content } = this;
 
     return html`
+      <link rel="stylesheet" href="node_modules/prismjs/themes/prism-tomorrow.css" />
+
       <section>
         <article>
           <header>
@@ -60,7 +62,7 @@ class Article extends connect(store)(PageViewElement) {
     const markdown = selectMarkdown(state);
 
     if (markdown) {
-      this.content = convertMarkdownToHtml(markdown, this.article.path);
+      this.content = convertMarkdownToHtml(markdown, this.article.path, this.article.languages);
     }
   }
 }

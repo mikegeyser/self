@@ -1,9 +1,3 @@
-import 'prismjs';
-
-import 'prismjs/components/prism-csharp';
-import 'prismjs/components/prism-java';
-import 'prismjs/components/prism-typescript';
-
 const converter = new showdown.Converter({ tables: true, metadata: true });
 
 const rewriteMarkdownImagePaths = (fileLocation, htmlText) => {
@@ -14,14 +8,21 @@ const rewriteMarkdownImagePaths = (fileLocation, htmlText) => {
   return htmlText.replace(regEx, `$1 src="courses/${imagePath}/$2" $3`);
 };
 
-export const convertMarkdownToHtml = (markdown, path) => {
+export const convertMarkdownToHtml = (markdown, path, languages) => {
   let htmlText = converter.makeHtml(markdown);
   htmlText = rewriteMarkdownImagePaths(path, htmlText);
   const parser = new DOMParser();
 
   const element = parser.parseFromString(htmlText, 'text/html').documentElement;
 
-  Prism.highlightAllUnder(element);
+  highlightCode(element, languages);
 
   return element;
+};
+
+export const highlightCode = (element, languages = []) => {
+  Promise.all([
+    import('prismjs'),
+    ...languages.map((language) => import(`/node_modules/prismjs/components/prism-${language}.js`))
+  ]).then((_) => Prism.highlightAllUnder(element));
 };

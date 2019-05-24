@@ -8,7 +8,7 @@
   "extraDependencies": [
     "manifest.json",
     "node_modules/@webcomponents/webcomponentsjs/**",
-    "node_modules/prismjs/**",
+    "node_modules/prismjs/**/*",
     "node_modules/showdown/dist/showdown.js"
   ],
   "builds": [
