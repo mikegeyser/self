@@ -20,9 +20,11 @@ class Articles extends connect(store)(PageViewElement) {
       ${this.articles.map(
         (article) => html`
           <section>
-            <h4><a href="/article/${article.key}">${article.title}</a></h4>
-            <div>${article.date}</div>
-            <p>${article.summary}</p>
+            <article>
+              <h3><a href="/article/${article.key}">${article.title}</a></h3>
+              <div>${article.date}</div>
+              <p>${article.summary}</p>
+            </article>
           </section>
         `
       )}

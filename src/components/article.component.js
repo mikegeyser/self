@@ -10,40 +10,24 @@ import { convertMarkdownToHtml } from '../services/markdown.service.js';
 import { updateMetadata } from 'pwa-helpers/metadata';
 
 const styles = css`
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--app-heading-font);
-    text-align: left;
-    margin: 0;
-    padding: 8px;
-  }
-
-  h2 {
-    font-size: 32pt;
-    margin-bottom: 0.1em;
-  }
-
-  h3 {
-    font-size: 26pt;
-    margin-top: 1em;
-  }
-
   time {
     font-style: italic;
     padding: 0 0 0 8px;
   }
 
   p,
-  li {
+  li,
+  footer {
     font-size: 15pt;
     line-height: 19pt;
     text-align: justify;
   }
-  
+
+  footer {
+    margin: 2em 0.5em 1em 0.5em;
+    font-style: italic;
+  }
+
   img {
     max-width: 100%;
     width: inherit;
@@ -76,7 +60,14 @@ class Article extends connect(store)(PageViewElement) {
             <h2>${article.title}</h2>
           </header>
           <time datetime="${article.date}">Originally written on ${article.date}. Revised on ${article.date}</time>
+
           ${content}
+
+          <footer>
+            If you have any questions or feedback, please feel free to reach out to me
+            <a href="https://twitter.com/mikegeyser" target="_blank"> on twitter</a> or
+            <a href="https://github.com/mikegeyser/self/issues/${article.issue}" target="_blank"> join the discussion on github</a>.
+          </footer>
         </article>
       </section>
     `;

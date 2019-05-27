@@ -82,7 +82,8 @@ class MyApp extends connect(store)(LitElement) {
           background-color: var(--app-header-background-color);
         }
 
-        [main-title], h1 {
+        [main-title],
+        h1 {
           font-family: var(--app-heading-font);
           text-transform: lowercase;
           font-size: 30px;
@@ -228,7 +229,10 @@ class MyApp extends connect(store)(LitElement) {
       </main>
 
       <footer>
-        <p>Made with &hearts; by the Polymer team.</p>
+        <p>
+          The content on this site is published under the
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons CC BY-NC-SA 4.0 license.</a>
+        </p>
       </footer>
 
       <snack-bar ?active="${this._snackbarOpened}">

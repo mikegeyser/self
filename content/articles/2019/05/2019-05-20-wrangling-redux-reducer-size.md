@@ -4,6 +4,7 @@ revised: 2019-05-27
 title: 'Wrangling Redux: reducer size'
 key: 'wrangling-redux-reducer-size',
 path: '/content/articles/2019/05/2019-05-20-wrangling-redux-reducer-size.md',
+issue: 'https://github.com/mikegeyser/self/issues/1'
 image: null,
 languages: 
   - 'json'

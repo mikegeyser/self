@@ -31,10 +31,26 @@ export const SharedStyles = css`
     background: var(--app-section-even-color);
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--app-heading-font);
+    text-align: left;
+    margin: 0;
+    padding: 8px;
+  }
+
   h2 {
-    font-size: 24px;
-    text-align: center;
-    color: var(--app-dark-text-color);
+    font-size: 32pt;
+    margin-bottom: 0.1em;
+  }
+
+  h3 {
+    font-size: 26pt;
+    margin-top: 1em;
   }
 
   @media (min-width: 460px) {
