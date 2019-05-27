@@ -1,6 +1,12 @@
 ---
 date: 2019-05-20
+revised: 2019-05-27
 title: 'Wrangling Redux: reducer size'
+key: 'wrangling-redux-reducer-size',
+path: '/content/articles/2019/05/2019-05-20-wrangling-redux-reducer-size.md',
+image: null,
+languages: 
+  - 'json'
 ---
 
 Redux is not the 'new hotness'.
@@ -106,11 +112,11 @@ export const user = (state = [], action) => {
 };
 ```
 
-As much as this seems like an elegant approach, it becomes a problem very quickly (something that should have been clear from the nesting alone). The code becomes confusing and convoluted in the following situations:
+As much as this seems like an elegant approach, it becomes a problem very quickly (something that should have been clear from the nesting alone). The code becomes unnecessarily confusing and convoluted when you're required to traverse the object graph, such as in the following situations:
 
-- If we wanted to represent the
-
-// TODO
+- Find and load a single section (for display on refresh),
+- Mark a single section as complete,
+- Show the percentage completion of a track or course.
 
 If you take, for example, the following piece of code that works out the percentage completion of a track. It bases the computation on its courses, or more specifically the sections inside that course. If a `section` has a `userSection`, then it is deemed complete.
 
@@ -165,7 +171,11 @@ Turns out that this is a relatively common problem in Redux, which can be overco
 
 ### A side of reselect
 
-// TODO: explain reselect.
+The selector example in the previous section is a relatively common pattern in redux. By encapsulating the state access behind a function, we can try and isolate our state tree from our component. This means that if we change how we access our state, it won't affect our component code, and it allows us to re-use the selector consistently across our application.
+
+We can take this even further by using a library called [reselect](https://github.com/reduxjs/reselect), which formalises this pattern with a few particularly salient features. It encourages removing duplicate (or repetitive) state out of the tree, by having the selectors be composeable. Something it accomplishes by memoizing the selector results. Simply put; if the input state for a selector doesn't change, it won't recompute the result - affording us with a nice performance bump.
+
+It's highly likely that I'll post more about reselect again in the future, but for the moment it's important to note that it is heavily used in the solution proposed below.
 
 ### Normalising the state
 
@@ -328,3 +338,9 @@ export const selectTrackProgress = createSelector(
 While they're not perfect, I believe that it's much improved. We now have a set of composeable, memoised functions that circumvented a lot of the problems in the previous example. Each individual selector is a simple function, or has a simple result function, that can be understood and tested in isolation. Without memoisation it is still not very performant code, but considering that Redux is built on a foundation of it, I feel that's a reasonable assumption to make.
 
 ### Conclusion.
+
+![Fix this nightmare](/content/articles/2019/05/images/redux-fix-this-nightmare.png)
+
+There are, however, a few challenges to be aware of when turning your model inside-out. They primarily hinge around the fact that you don't have a single canonical model of your domain, and instead have to piece together your model from the actions, reducers and selectors scattered across your solution. As much as I'm not a big TypeScript fan, I feel like the reducer state would benefit greatly from having some guarantees as to what you can expect to be on the tree.
+
+Nevertheless, when making this change we saw a marked improvement in the quality and complexity of the code in our solution. It wasn't all sunshine and roses; we were initially _very_ concerned. Once we started normalising the state, we found we were adding quite a lot of additional (albeit simple) code in the form of our selectors. Some of them seemed so arbitrary, that they felt like they really had no place being refactored out of the component. We persisted, however, and then hit this watershed moment where we deleted large swathes of unsustainable code. In the end, all that we were left with was a few simple reducers and selectors, a result we were really happy with.

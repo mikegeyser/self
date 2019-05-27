@@ -43,6 +43,13 @@ const styles = css`
     line-height: 19pt;
     text-align: justify;
   }
+  
+  img {
+    max-width: 100%;
+    width: inherit;
+    display: block;
+    margin: auto;
+  }
 `;
 
 class Article extends connect(store)(PageViewElement) {

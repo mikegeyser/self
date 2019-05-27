@@ -10,7 +10,7 @@ const rewriteMarkdownImagePaths = (fileLocation, htmlText) => {
 
 export const convertMarkdownToHtml = (markdown, path, languages) => {
   let htmlText = converter.makeHtml(markdown);
-  htmlText = rewriteMarkdownImagePaths(path, htmlText);
+  // htmlText = rewriteMarkdownImagePaths(path, htmlText);
   const parser = new DOMParser();
 
   const element = parser.parseFromString(htmlText, 'text/html').documentElement;
