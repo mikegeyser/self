@@ -30,7 +30,7 @@ const loadPage = (page) => (dispatch) => {
   const rootPath = /$^/;
   const homePath = /home/;
   const articlesPath = /articles/;
-  const articlePath = /article\/(.[^\/]+)$/;
+  const articlePath = /article\/(.+)$/;
   const videosPath = /videos/;
 
   let match;

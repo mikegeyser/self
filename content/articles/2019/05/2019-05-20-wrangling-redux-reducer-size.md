@@ -2,13 +2,15 @@
 date: 2019-05-20
 revised: 2019-05-27
 title: 'Wrangling Redux: reducer size'
-key: 'wrangling-redux-reducer-size',
-path: '/content/articles/2019/05/2019-05-20-wrangling-redux-reducer-size.md',
-issue: '1'
-image: null,
-languages: 
-  - 'json'
+key: wrangling-redux-reducer-size
+path: /content/articles/2019/05/2019-05-20-wrangling-redux-reducer-size.md
+issue: 1
+image: null
+languages:
+  - json
 ---
+
+## Wrangling Redux: reducer size
 
 Redux is not the 'new hotness'.
 
@@ -188,14 +190,14 @@ So instead of directly translating the relational structure into an object struc
     {
       "id": "1",
       "name": "Web",
-      "courseIds": [ 1 ]
+      "courseIds": [1]
     }
   ],
   "courses": [
     {
       "id": "1",
       "name": "HTML",
-      "sectionIds": [ 1 ]
+      "sectionIds": [1]
     }
   ],
   "sections": [

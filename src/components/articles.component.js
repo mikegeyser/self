@@ -21,7 +21,7 @@ class Articles extends connect(store)(PageViewElement) {
         (article) => html`
           <section>
             <article>
-              <h3><a href="/article/${article.key}">${article.title}</a></h3>
+              <h3><a href="/article/${article.key}" rel="external">${article.title}</a></h3>
               <div>${article.date}</div>
               <p>${article.summary}</p>
             </article>

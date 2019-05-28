@@ -31,6 +31,9 @@ import './snack-bar.js';
 import { getContent } from '../services/content.service.js';
 import './menu-bar.component.js';
 
+
+import './article.component.js';
+
 class MyApp extends connect(store)(LitElement) {
   static get properties() {
     return {
@@ -204,7 +207,9 @@ class MyApp extends connect(store)(LitElement) {
         `;
       case 'article':
         return html`
-          <m-article class="page" active></m-article>
+          <m-article class="page" active>
+            <slot></slot>
+          </m-article>
         `;
       case 'videos':
         return html`

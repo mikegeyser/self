@@ -1,0 +1,372 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <title>mikerambl.es</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Something about javascript and the web platform." />
+
+        <base href="/" />
+
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=Kmnp75vWl7" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=Kmnp75vWl7" />
+
+        <!-- See https://goo.gl/OOhYW5 -->
+        <link rel="manifest" href="manifest.json" />
+
+        <!-- See https://goo.gl/qRE0vM -->
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="mikerambl.es" />
+
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="mikerambl.es" />
+
+        <!-- Homescreen icons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=Kmnp75vWl7" />
+
+        <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="msapplication-config" content="/images/browserconfig.xml?v=Kmnp75vWl7" />
+
+        <!-- Default twitter cards -->
+        <meta name="twitter:title" content="mikerambl.es" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@mikegeyser" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="Something about javascript and the web platform." />
+        <meta property="og:site_name" content="mikerambl.es" />
+        <meta property="og:image" content="images/manifest/icon-144x144.png" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin />
+        <link rel="preconnect" href="https://www.googletagmanager.com/" crossorigin />
+
+        <script>
+          if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+              navigator.serviceWorker.register('sw.js', {
+                scope: '/'
+              });
+            });
+          }
+
+          window.process = { env: { NODE_ENV: 'production' } };
+        </script>
+
+        <style>
+          @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+
+          body {
+            margin: 0;
+            font-family: Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+            line-height: 1.5;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+          }
+        </style>
+      </head>
+      <body>
+        <my-app appTitle="my app">
+          <article>
+            <h2 id="wrangling-redux-reducer-size">Wrangling Redux: reducer size</h2>
+<p>Redux is not the 'new hotness'.</p>
+<p>In fact, that it's probably quite far along the downward slope of the technology <a href="https://en.wikipedia.org/wiki/Hype_cycle">hype cycle</a>. As far as state management for your average website goes, it's total overkill, as it introduces a lot of additional complexity for little concrete benefit. The learning curve is extremely steep, and you quickly feel like you're writing a lot of boiler-plate code to accomplish something trivial. Even its creator, Dan Ambramov, <a href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367">cautions one against </a> blindly smashing redux into everything. In spite of these reasons, I have fallen in love with Redux. I am enamoured with the concept of 'Flux' architecture, as well as the lightweight implementation of the framework itself.</p>
+<p>You have to understand that I come from a background of building scalable, transactional web applications, where performance and robustness are the highest priorities. These systems invariably led away from 'conventional' architectural models into 'event-based', functional (perhaps more <em>function-ish</em>) and distributed system models (queue-based / streaming / event sourced / whatever). A lot of the concepts that Redux is reliant on I feel come directly from this event-based world, or at the very least, I feel that a lot of the metaphors fit neatly into my mental model of how such systems work. Redux gives me the architectural constructs that I feel I need to turn the front end into just another node in a larger distributed, event-based system. It allows one to solve interesting problems, in interesting ways.</p>
+<p>Excitement aside, this is not simply a love letter to Redux. There are many significant challenges to working with Redux, particularly if you approach it naively. It still has an incredibly steep learning curve, and a number of 'easy to stumble into' problems. Needless to say, I have stumbled into some of these problems, and I'd like to share some of my learnings.</p>
+<h3 id="the-problem-of-objects">The problem of objects</h3>
+<p>Object-orientation is like one of those 4lbs hammers. You know the ones I mean; the masonry ones, of middling size, used for smashing bricks. It's a thing that can be used in a variety of situations, but isn't well suited for many of them. It doesn't break bricks as well as power tools, turns nails into a smear of metal against whatever you're hitting, and is pretty unwieldy and hard to use. The problem with it (both OO and hammers, I suppose), is that it's typically the first tool that you reach for in your toolbox. Let's look at an example.</p>
+<p>We have to model some behaviour in a domain for learning management. We have tracks, courses, sections and users. The users can complete any number of sections, and any courses. Sections could belong to many courses, and courses could belong to many tracks. We want to be able to represent percentage completion of any given track/course based upon which sections a user has, well, completed. Anyway, this data has to come from somewhere, and you can easily fall into something like the following table structure*.</p>
+<pre><code>   +--------+    +--------------+    +---------+    +----------------+    +----------+
+   | Tracks | -&gt; | TrackCourses | -&gt; | Courses | -&gt; | CourseSections | -&gt; | Sections |
+   +--------+    +--------------+    +---------+    +----------------+    +----------+
+
+   +------+    +--------------+
+   | User | -&gt; | UserTracks   |
+   +------+    +--------------+
+       |       +--------------+
+       ------&gt; | UserCourses  |
+       |       +--------------+
+       |       +--------------+
+       ------&gt; | UserSections |
+               +--------------+</code></pre>
+<p>*_You get the idea, it's not meant to be a rigorous entity-relationship diagram._</p>
+<p>When I looked at data structured like this, I represented this as a JSON tree with two branches and collapsed all of the 'linking' tables as being purely a database concern. In fact I decided that these two representations would be separated at a request level (two different http calls).</p>
+<pre><code class="json language-json">{
+  "tracks": [
+    {
+      "id": 1,
+      "name": "Web",
+      "courses": [
+        {
+          "id": 1,
+          "name": "HTML",
+          "sections": [
+            {
+              "id": 1,
+              "name": "Introduction"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+<pre><code class="json language-json">{
+  "user": {
+    "tracks": [
+      {
+        "id": 1,
+        "courses": [
+          {
+            "id": 1,
+            "sections": [
+              {
+                "id": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+<p>I could then take an incredibly simple assumption with the reducer, and deal with these two trees as being objects on the state.</p>
+<pre><code class="js language-js">export const tracks = (state = [], action) =&gt; {
+  switch (action.type) {
+    case TRACKS_RECEIVED:
+      return [...action.tracks];
+
+    default:
+      return state;
+  }
+};
+
+export const user = (state = [], action) =&gt; {
+  switch (action.type) {
+    case USER_RECEIVED:
+      return [...action.tracks];
+
+    default:
+      return state;
+  }
+};</code></pre>
+<p>As much as this seems like an elegant approach, it becomes a problem very quickly (something that should have been clear from the nesting alone). The code becomes unnecessarily confusing and convoluted when you're required to traverse the object graph, such as in the following situations:</p>
+<ul>
+<li>Find and load a single section (for display on refresh),</li>
+<li>Mark a single section as complete,</li>
+<li>Show the percentage completion of a track or course.</li>
+</ul>
+<p>If you take, for example, the following piece of code that works out the percentage completion of a track. It bases the computation on its courses, or more specifically the sections inside that course. If a <code>section</code> has a <code>userSection</code>, then it is deemed complete.</p>
+<pre><code class="js language-js">export const selectInProgressTracks = (state) =&gt; {
+  if (!state.tracks || !state.user) return [];
+
+  let tracksInProgress = state.tracks.map((track) =&gt; {
+    let userTrack = state.user.tracks.find((u) =&gt; u.id === track.id);
+
+    let courses = track.courses.map((course) =&gt; {
+      let userCourse = userTrack.courses.find((c) =&gt; c.id === course.id);
+
+      let sections = course.sections.map((section) =&gt; {
+        let userSection = userCourse.sections.find((s) =&gt; s.id === section.id);
+
+        return {
+          ...section,
+          ...userSection
+        };
+      });
+
+      let progress = {
+        total: sections.length,
+        completed: sections.filter((s) =&gt; s.userSection).length
+      };
+
+      return {
+        ...course,
+        ...progress
+      };
+    });
+
+    let progress = {
+      total: courses.reduce((sum, course) =&gt; (sum += course.total), 0),
+      completed: courses.reduce((sum, course) =&gt; (sum += course.completed), 0)
+    };
+
+    return {
+      ...track,
+      ...progress
+    };
+  });
+
+  return tracksInProgress;
+};</code></pre>
+<p>Now… There are many problems with this code. It's deeply nested, and confusing to read through. It performs really (really) poorly, due to multiple iteration over the same array contents. The result be computed every time any part of the state tree updates. And even if we use memoisation to cache the results, we're going to see very little performance improvemnt. We could possibly write it a little neater, or make it a lot more performant, but it's very difficult to do both (trust me, I tried).</p>
+<p>Turns out that this is a relatively common problem in Redux, which can be overcome by <a href="https://redux.js.org/recipes/structuring-reducers/normalizing-state-shape">normalising the state shape</a>. Like with so much in software, we stumbled across this solution ourselves without knowing what it was called. (I suppose this is where I pass some pithy comment about <a href="https://www.goodreads.com/quotes/843880-there-is-no-such-thing-as-a-new-idea-it">there being no new ideas</a>?)</p>
+<h3 id="a-side-of-reselect">A side of reselect</h3>
+<p>The selector example in the previous section is a relatively common pattern in redux. By encapsulating the state access behind a function, we can try and isolate our state tree from our component. This means that if we change how we access our state, it won't affect our component code, and it allows us to re-use the selector consistently across our application.</p>
+<p>We can take this even further by using a library called <a href="https://github.com/reduxjs/reselect">reselect</a>, which formalises this pattern with a few particularly salient features. It encourages removing duplicate (or repetitive) state out of the tree, by having the selectors be composeable. Something it accomplishes by memoizing the selector results. Simply put; if the input state for a selector doesn't change, it won't recompute the result - affording us with a nice performance bump.</p>
+<p>It's highly likely that I'll post more about reselect again in the future, but for the moment it's important to note that it is heavily used in the solution proposed below.</p>
+<h3 id="normalising-the-state">Normalising the state</h3>
+<p>So instead of directly translating the relational structure into an object structure, we can instead return something closer to the 'raw' data from the request. The only challenge we have is collapsing the linking tables (such as TrackCourses and CourseSections), as it is information we need. We end up with something along the lines of:</p>
+<pre><code class="json language-json">{
+  "tracks": [
+    {
+      "id": "1",
+      "name": "Web",
+      "courseIds": [1]
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "name": "HTML",
+      "sectionIds": [1]
+    }
+  ],
+  "sections": [
+    {
+      "id": "1",
+      "name": "Introduction"
+    }
+  ]
+}</code></pre>
+<p>And then respresent the user data, in a seperate request, as:</p>
+<pre><code class="json language-json">{
+  "tracks": [1],
+
+  "courses": [1],
+
+  "sections": [1]
+}</code></pre>
+<p>And this lets us transpose our two reducers into three, completely subsuming the user reducer.</p>
+<pre><code class="js language-js">export const tracks = (state = {}, action) =&gt; {
+  switch (action.type) {
+    case TRACKS_RECEIVED:
+      return {...state, all: ...action.tracks};
+
+    case USER_TRACKS_RECEIVED:
+      return {...state, user: ...action.tracks};
+
+    default:
+      return state;
+  }
+};
+
+export const courses = (state = {}, action) =&gt; {
+  switch (action.type) {
+    case COURSES_RECEIVED:
+      return {...state, all: ...action.courses};
+
+    case USER_COURSES_RECEIVED:
+      return {...state, user: ...action.courses};
+
+    default:
+      return state;
+  }
+};
+
+export const sections = (state = {}, action) =&gt; {
+  switch (action.type) {
+    case SECTIONS_RECEIVED:
+      return {...state, all: ...action.sections};
+
+    case USER_SECTIONS_RECEIVED:
+      return {...state, user: ...action.sections};
+
+    default:
+      return state;
+  }
+};</code></pre>
+<p>So far there are no great shakes, but as soon as we take the next step we can see a marked difference in approach. We can now write selectors that handle each of the sections of our state tree independently.</p>
+<pre><code class="js language-js">export const selectSections = (state) =&gt; state.sections.all.map((section) =&gt; ({
+      ...section,
+      userSection: state.sections.user.find((userSection) =&gt; userSection.sectionId === section.sectionId)
+    }))
+);
+
+const selectAllCourses = (state) =&gt; state.courses.all;
+const selectUserCourses = (state) =&gt; state.courses.user;
+
+export const selectCourses = createSelector(
+  selectAllCourses,
+  selectSections,
+  (courses, sections, user) =&gt;
+    courses.map((course) =&gt; ({
+      ...course,
+      sections: sections.filter((section) =&gt; course.sectionIds.includes(section.sectionId));
+    }))
+);
+
+export const selectAllTracks = (state) =&gt; state.tracks.all;
+export const selectUserTracks = (state) =&gt; state.tracks.user;
+
+export const selectTracks = createSelector(
+  selectAllTracks,
+  selectCourses,
+  selectUserTracks,
+  (tracks, courses, user) =&gt;
+    tracks.map((track) =&gt; ({
+      ...track,
+      courses: courses.filter((course) =&gt; track.courseIds.includes(course.courseId))
+    }))
+);</code></pre>
+<p>Now that might seem a bit confusing at first blush (see comments about learning curve above), but when you unpack it we only have a collection of really small functions that pick items out of the state tree. These functions are then individually memoised using reselect, and can then be composed to create really sophisticated selectors. Let's look at how we would do that using the in progress from above.</p>
+<pre><code class="js language-js">export const selectCourseProgress = createSelector(
+  selectCourses,
+  (courses) =&gt;
+    courses.map((course) =&gt; {
+      let total = course.sections.length;
+      let completed = course.sections.filter((section) =&gt; section.userSectionId).length;
+
+      return {
+        ...course,
+        total,
+        completed
+      };
+    })
+);
+
+export const selectTrackProgress = createSelector(
+  selectTracks,
+  selectCourseProgress,
+  (tracks, progress) =&gt;
+    tracks.map((track) =&gt; {
+      let courses = track.courses.map((course) =&gt; progress.find((p) =&gt; p.courseId === course.courseId));
+
+      let total = courses.reduce((sum, course) =&gt; (sum += course.total), 0);
+      let completed = courses.reduce((sum, course) =&gt; (sum += course.completed), 0);
+
+      return {
+        ...track,
+        total,
+        completed
+      };
+    })
+);</code></pre>
+<p>While they're not perfect, I believe that it's much improved. We now have a set of composeable, memoised functions that circumvented a lot of the problems in the previous example. Each individual selector is a simple function, or has a simple result function, that can be understood and tested in isolation. Without memoisation it is still not very performant code, but considering that Redux is built on a foundation of it, I feel that's a reasonable assumption to make.</p>
+<h3 id="conclusion">Conclusion.</h3>
+<p><img src="/content/articles/2019/05/images/redux-fix-this-nightmare.png" alt="Fix this nightmare" /></p>
+<p>There are, however, a few challenges to be aware of when turning your model inside-out. They primarily hinge around the fact that you don't have a single canonical model of your domain, and instead have to piece together your model from the actions, reducers and selectors scattered across your solution. As much as I'm not a big TypeScript fan, I feel like the reducer state would benefit greatly from having some guarantees as to what you can expect to be on the tree.</p>
+<p>Nevertheless, when making this change we saw a marked improvement in the quality and complexity of the code in our solution. It wasn't all sunshine and roses; we were initially <em>very</em> concerned. Once we started normalising the state, we found we were adding quite a lot of additional (albeit simple) code in the form of our selectors. Some of them seemed so arbitrary, that they felt like they really had no place being refactored out of the component. We persisted, however, and then hit this watershed moment where we deleted large swathes of unsustainable code. In the end, all that we were left with was a few simple reducers and selectors, a result we were really happy with.</p>
+          </article>
+        </my-app>
+        <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+        <script type="module" src="src/components/my-app.js"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98817499-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+
+          gtag('config', 'UA-98817499-1');
+        </script>
+      </body>
+    </html>
+  
