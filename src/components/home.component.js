@@ -81,7 +81,7 @@ class Home extends PageViewElement {
     return html`
       <section>
         <div class="container">
-          <div class="profile-picture">
+          <div id="profile-picture" class="profile-picture">
             ${profilePicture}
           </div>
 
@@ -110,6 +110,22 @@ class Home extends PageViewElement {
         </div>
       </section>
     `;
+  }
+
+  firstUpdated() {
+    const img = new Image();
+    img.src = 'images/profile-picture.jpg';
+    img.style.opacity = '0';
+
+    img.onload = () => {
+      const parent = this.shadowRoot.getElementById('profile-picture');
+      const placeholder = parent.getElementsByTagName('svg')[0];
+      placeholder.style.opacity = '0';
+      setTimeout((_) => placeholder.remove(), 500);
+
+      parent.appendChild(img);
+      setTimeout((_) => (img.style.opacity = '1'), 1);
+    };
   }
 }
 

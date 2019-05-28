@@ -110,6 +110,10 @@ let styles = css`
     display: none;
   }
 
+  app-drawer {
+    z-index: 1;
+  }
+
   @media (min-width: 460px) {
     [main-title] {
       padding-right: 0px;
