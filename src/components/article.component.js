@@ -54,14 +54,14 @@ class Article extends connect(store)(PageViewElement) {
     if (!article) return html``;
 
     return html`
-      <link rel="stylesheet" href="node_modules/prismjs/themes/prism-tomorrow.css" />
+      <link rel="stylesheet" href="/node_modules/prismjs/themes/prism-tomorrow.css" />
 
       <section>
         <article>
           <header>
             <h2>${article.title}</h2>
           </header>
-          <time datetime="${article.date}">Originally written on ${article.date}. Revised on ${article.date}</time>
+          <time datetime="${article.date}">Originally written on ${article.date}. Revised on ${article.revised}</time>
 
           ${content}
 
