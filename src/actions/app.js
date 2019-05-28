@@ -31,6 +31,7 @@ const loadPage = (page) => (dispatch) => {
   const homePath = /home/;
   const articlesPath = /articles/;
   const articlePath = /article\/(.[^\/]+)$/;
+  const videosPath = /videos/;
 
   let match;
   let routeData = () => (match.length > 1 ? match.slice(1) : null);
@@ -44,6 +45,9 @@ const loadPage = (page) => (dispatch) => {
   } else if ((match = page.match(articlePath))) {
     import('../components/article.component.js');
     dispatch(updatePage('article', routeData()));
+  } else if ((match = page.match(videosPath))) {
+    import('../components/videos.component.js');
+    dispatch(updatePage('videos', routeData()));
   } else {
     page = 'view404';
     import('../components/my-view404.js');

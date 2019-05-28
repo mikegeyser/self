@@ -157,7 +157,7 @@ class MenuBar extends connect(store)(LitElement) {
           <nav class="toolbar-list">
             <a ?selected="${this.selected === 'home'}" href="/">Home</a>
             <a ?selected="${this.selected === 'articles' || this._page === 'article'}" href="/articles">Articles</a>
-            <a ?selected="${this.selected === 'view3'}" href="/view3">Talks</a>
+            <a ?selected="${this.selected === 'videos'}" href="/videos">Videos</a>
           </nav>
           <button class="menu-btn" title="Menu" @click="${this.menuButtonClicked}">${menuIcon}</button>
         </div>
@@ -167,7 +167,7 @@ class MenuBar extends connect(store)(LitElement) {
         <nav class="drawer-list">
           <a ?selected="${this.selected === 'home'}" href="/">Home</a>
           <a ?selected="${this.selected === 'articles' || this._page === 'article'}" href="/articles">Articles</a>
-          <a ?selected="${this.selected === 'view3'}" href="/view3">Talks</a>
+          <a ?selected="${this.selected === 'videos'}" href="/videos">Videos</a>
         </nav>
       </app-drawer>
     `;
@@ -191,6 +191,9 @@ class MenuBar extends connect(store)(LitElement) {
       case 'articles':
       case 'article':
         this.selected = 'articles';
+        break;
+      case 'videos':
+        this.selected = 'videos';
         break;
       default:
         this.selected = state.app.page;

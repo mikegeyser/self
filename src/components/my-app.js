@@ -27,7 +27,6 @@ import '@polymer/app-layout/app-drawer/app-drawer.js';
 import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js';
-import { menuIcon } from './my-icons.js';
 import './snack-bar.js';
 import { getContent } from '../services/content.service.js';
 import './menu-bar.component.js';
@@ -49,7 +48,7 @@ class MyApp extends connect(store)(LitElement) {
         :host {
           display: block;
           width: 100%;
-          
+
           --app-max-width: 1000px;
           --app-drawer-width: 256px;
 
@@ -206,6 +205,10 @@ class MyApp extends connect(store)(LitElement) {
       case 'article':
         return html`
           <m-article class="page" active></m-article>
+        `;
+      case 'videos':
+        return html`
+          <m-videos class="page" active></m-videos>
         `;
       default:
         return html`
