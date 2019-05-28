@@ -51,6 +51,8 @@ class Article extends connect(store)(PageViewElement) {
   render() {
     let { article, content } = this;
 
+    if (!article) return html``;
+
     return html`
       <link rel="stylesheet" href="node_modules/prismjs/themes/prism-tomorrow.css" />
 
@@ -66,7 +68,9 @@ class Article extends connect(store)(PageViewElement) {
           <footer>
             If you have any questions or feedback, please feel free to reach out to me
             <a href="https://twitter.com/mikegeyser" target="_blank"> on twitter</a> or
-            <a href="https://github.com/mikegeyser/self/issues/${article.issue}" target="_blank"> join the discussion on github</a>.
+            <a href="https://github.com/mikegeyser/self/issues/${article.issue}" target="_blank">
+              join the discussion on github</a
+            >.
           </footer>
         </article>
       </section>
@@ -89,7 +93,7 @@ class Article extends connect(store)(PageViewElement) {
     this.article = selectArticle(state);
     const markdown = selectMarkdown(state);
 
-    if (markdown) {
+    if (markdown && this.article) {
       this.content = convertMarkdownToHtml(markdown, this.article.path, this.article.languages);
     }
   }

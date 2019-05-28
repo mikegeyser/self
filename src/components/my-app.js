@@ -30,6 +30,7 @@ import '@polymer/app-layout/app-toolbar/app-toolbar.js';
 import { menuIcon } from './my-icons.js';
 import './snack-bar.js';
 import { getContent } from '../services/content.service.js';
+import './menu-bar.component.js';
 
 class MyApp extends connect(store)(LitElement) {
   static get properties() {
@@ -47,10 +48,14 @@ class MyApp extends connect(store)(LitElement) {
       css`
         :host {
           display: block;
-
+          width: 100%;
+          
+          --app-max-width: 1000px;
           --app-drawer-width: 256px;
 
-          --app-primary-color: #e91e63;
+          /*--app-primary-color: #e91e63;*/
+          --app-primary-color: #293237;
+          --app-secondary-color: #293237;
           --app-secondary-color: #293237;
           --app-dark-text-color: var(--app-secondary-color);
           --app-light-text-color: white;
@@ -146,7 +151,6 @@ class MyApp extends connect(store)(LitElement) {
         }
 
         .main-content {
-          padding-top: 64px;
           min-height: 100vh;
         }
 
@@ -177,7 +181,6 @@ class MyApp extends connect(store)(LitElement) {
           }
 
           .main-content {
-            padding-top: 107px;
           }
 
           /* The drawer button isn't shown in the wide layout, so we don't
@@ -190,42 +193,35 @@ class MyApp extends connect(store)(LitElement) {
     ];
   }
 
+  renderCurrentPage() {
+    switch (this._page) {
+      case 'home':
+        return html`
+          <m-home class="page" active></m-home>
+        `;
+      case 'articles':
+        return html`
+          <m-articles class="page" active></m-article>
+        `;
+      case 'article':
+        return html`
+          <m-article class="page" active></m-article>
+        `;
+      default:
+        return html`
+          <my-view404 class="page" active></my-view404>
+        `;
+    }
+  }
+
   render() {
     // Anything that's related to rendering should be done in here.
     return html`
-      <!-- Header -->
-      <app-header condenses reveals effects="waterfall">
-        <app-toolbar class="toolbar-top">
-          <button class="menu-btn" title="Menu" @click="${this._menuButtonClicked}">
-            ${menuIcon}
-          </button>
-          <div main-title>// mikerambl.es</div>
-        </app-toolbar>
-
-        <!-- This gets hidden on a small screen-->
-        <nav class="toolbar-list">
-          <a ?selected="${this._page === 'home'}" href="/">Home</a>
-          <a ?selected="${this._page === 'articles'}" href="/articles">Articles</a>
-          <a ?selected="${this._page === 'view3'}" href="/view3">Talks</a>
-        </nav>
-      </app-header>
-
-      <!-- Drawer content -->
-      <app-drawer .opened="${this._drawerOpened}" @opened-changed="${this._drawerOpenedChanged}">
-        <nav class="drawer-list">
-          <a ?selected="${this._page === 'home'}" href="/">Home</a>
-          <a ?selected="${this._page === 'articles'}" href="/articles">Articles</a>
-          <a ?selected="${this._page === 'view3'}" href="/view3">Talks</a>
-        </nav>
-      </app-drawer>
+      <m-menu-bar></m-menu-bar>
 
       <!-- Main content -->
       <main role="main" class="main-content">
-        <m-home class="page" ?active="${this._page === 'home'}"></m-home>
-        <m-articles class="page" ?active="${this._page === 'articles'}"></m-articles>
-        <m-article class="page" ?active="${this._page === 'article'}"></m-article>
-        <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
-        <my-view404 class="page" ?active="${this._page === 'view404'}"></my-view404>
+        ${this.renderCurrentPage()}
       </main>
 
       <footer>
