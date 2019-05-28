@@ -8838,13 +8838,11 @@ store.addReducers({app:app$1,content});var store$1={store:store};_exports.$store
     background-color: var(--app-header-background-color);
   }
 
-  a {
-    text-decoration: none;
-  }
-
+  a,
+  a:active,
   a:visited {
-    color: inherit;
     text-decoration: none;
+    color: var(--app-header-text-color);
   }
 
   nav.toolbar-list {
