@@ -8597,7 +8597,7 @@ throw new Error(message)}catch(e){}// eslint-disable-line no-empty
 const page="/"===path?"home":path.slice(1);// Any other info you might want to extract from the path (like page type),
 // you can do here
 dispatch(loadPage(page));// Close the drawer - in case the *path* change came from a link in the drawer.
-dispatch(updateDrawerState(!1))},loadPage=page=>dispatch=>{const rootPath=/$^/,homePath=/home/,articlesPath=/articles/,articlePath=/article\/(.[^\/]+)$/;let match,routeData=()=>1<match.length?match.slice(1):null;if((match=page.match(homePath))||(match=page.match(rootPath))){import("./home.component.js").then(bundle=>bundle&&bundle.$homeComponent||{});dispatch(updatePage("home",routeData()))}else if(match=page.match(articlesPath)){import("./articles.component.js").then(bundle=>bundle&&bundle.$articlesComponent||{});dispatch(updatePage("articles",routeData()))}else if(match=page.match(articlePath)){import("./article.component.js").then(bundle=>bundle&&bundle.$articleComponent||{});dispatch(updatePage("article",routeData()))}else{page="view404";import("./my-view404.js").then(bundle=>bundle&&bundle.$myView404||{});dispatch(updatePage(page))}if(window.ga){window.ga("set","page",page)}// Scroll to the top of the screen.
+dispatch(updateDrawerState(!1))},loadPage=page=>dispatch=>{const rootPath=/$^/,homePath=/home/,articlesPath=/articles/,articlePath=/article\/(.[^\/]+)$/,videosPath=/videos/;let match,routeData=()=>1<match.length?match.slice(1):null;if((match=page.match(homePath))||(match=page.match(rootPath))){import("./home.component.js").then(bundle=>bundle&&bundle.$homeComponent||{});dispatch(updatePage("home",routeData()))}else if(match=page.match(articlesPath)){import("./articles.component.js").then(bundle=>bundle&&bundle.$articlesComponent||{});dispatch(updatePage("articles",routeData()))}else if(match=page.match(articlePath)){import("./article.component.js").then(bundle=>bundle&&bundle.$articleComponent||{});dispatch(updatePage("article",routeData()))}else if(match=page.match(videosPath)){import("./videos.component.js").then(bundle=>bundle&&bundle.$videosComponent||{});dispatch(updatePage("videos",routeData()))}else{page="view404";import("./my-view404.js").then(bundle=>bundle&&bundle.$myView404||{});dispatch(updatePage(page))}if(window.ga){window.ga("set","page",page)}// Scroll to the top of the screen.
 window.scroll({top:0,left:0})},updatePage=(page,routeData)=>{return{type:UPDATE_PAGE,page,routeData}};let snackbarTimer;const showSnackbar=()=>dispatch=>{dispatch({type:OPEN_SNACKBAR});window.clearTimeout(snackbarTimer);snackbarTimer=window.setTimeout(()=>dispatch({type:CLOSE_SNACKBAR}),3e3)},updateOffline=offline=>(dispatch,getState)=>{// Show the snackbar only if offline status changes.
 if(offline!==getState().app.offline){dispatch(showSnackbar())}dispatch({type:UPDATE_OFFLINE,offline})},updateDrawerState=opened=>{return{type:UPDATE_DRAWER_STATE,opened}};var app={UPDATE_PAGE:UPDATE_PAGE,UPDATE_OFFLINE:UPDATE_OFFLINE,UPDATE_DRAWER_STATE:UPDATE_DRAWER_STATE,OPEN_SNACKBAR:OPEN_SNACKBAR,CLOSE_SNACKBAR:CLOSE_SNACKBAR,navigate:navigate,showSnackbar:showSnackbar,updateOffline:updateOffline,updateDrawerState:updateDrawerState};const CONTENT_RECEIVED="CONTENT_RECEIVED",contentReceived=content=>{return{type:CONTENT_RECEIVED,content}};var contentReceived_action={CONTENT_RECEIVED:CONTENT_RECEIVED,contentReceived:contentReceived};const MARKDOWN_RECEIVED="MARKDOWN_RECEIVED",markdownReceived=markdown=>{return{type:MARKDOWN_RECEIVED,markdown}};var markdownReceived_action={MARKDOWN_RECEIVED:MARKDOWN_RECEIVED,markdownReceived:markdownReceived};const SharedStyles=css`
   :host {
@@ -8611,7 +8611,7 @@ if(offline!==getState().app.offline){dispatch(showSnackbar())}dispatch({type:UPD
   }
 
   section > * {
-    max-width: 1000px;
+    max-width: var(--app-max-width);
     margin-right: auto;
     margin-left: auto;
   }
@@ -8803,7 +8803,7 @@ store.addReducers({app:app$1,content});var store$1={store:store};const menuIcon=
           <nav class="toolbar-list">
             <a ?selected="${"home"===this.selected}" href="/">Home</a>
             <a ?selected="${"articles"===this.selected||"article"===this._page}" href="/articles">Articles</a>
-            <a ?selected="${"view3"===this.selected}" href="/view3">Talks</a>
+            <a ?selected="${"videos"===this.selected}" href="/videos">Videos</a>
           </nav>
           <button class="menu-btn" title="Menu" @click="${this.menuButtonClicked}">${menuIcon}</button>
         </div>
@@ -8813,10 +8813,10 @@ store.addReducers({app:app$1,content});var store$1={store:store};const menuIcon=
         <nav class="drawer-list">
           <a ?selected="${"home"===this.selected}" href="/">Home</a>
           <a ?selected="${"articles"===this.selected||"article"===this._page}" href="/articles">Articles</a>
-          <a ?selected="${"view3"===this.selected}" href="/view3">Talks</a>
+          <a ?selected="${"videos"===this.selected}" href="/videos">Videos</a>
         </nav>
       </app-drawer>
-    `}static get properties(){return{selected:{type:String},drawerOpened:{type:Boolean}}}stateChanged(state){this.drawerOpened=state.app.drawerOpened;switch(state.app.page){case"articles":case"article":this.selected="articles";break;default:this.selected=state.app.page;}}}window.customElements.define("m-menu-bar",MenuBar);class SnackBar extends LitElement{static get properties(){return{active:{type:Boolean}}}static get styles(){return[css`
+    `}static get properties(){return{selected:{type:String},drawerOpened:{type:Boolean}}}stateChanged(state){this.drawerOpened=state.app.drawerOpened;switch(state.app.page){case"articles":case"article":this.selected="articles";break;case"videos":this.selected="videos";break;default:this.selected=state.app.page;}}}window.customElements.define("m-menu-bar",MenuBar);class SnackBar extends LitElement{static get properties(){return{active:{type:Boolean}}}static get styles(){return[css`
         :host {
           display: block;
           position: fixed;
@@ -8852,7 +8852,7 @@ store.addReducers({app:app$1,content});var store$1={store:store};const menuIcon=
         :host {
           display: block;
           width: 100%;
-          
+
           --app-max-width: 1000px;
           --app-drawer-width: 256px;
 
@@ -8998,6 +8998,8 @@ store.addReducers({app:app$1,content});var store$1={store:store};const menuIcon=
           <m-articles class="page" active></m-article>
         `;case"article":return html$1`
           <m-article class="page" active></m-article>
+        `;case"videos":return html$1`
+          <m-videos class="page" active></m-videos>
         `;default:return html$1`
           <my-view404 class="page" active></my-view404>
         `;}}render(){// Anything that's related to rendering should be done in here.

@@ -20,9 +20,11 @@ export const convertMarkdownToHtml = (markdown, path, languages) => {
   return element;
 };
 
+const prism_base_url = '/node_modules/prismjs';
 export const highlightCode = async (element, languages = []) => {
-  Promise.all([
-    import('prismjs'),
-    ...languages.map((language) => import(`/node_modules/prismjs/components/prism-${language}.js`))
-  ]).then((_) => Prism.highlightAllUnder(element));
+  import(`${prism_base_url}/prism.js`)
+    .then(() =>
+      Promise.all([...languages.map((language) => import(`${prism_base_url}/components/prism-${language}.js`))])
+    )
+    .then((_) => Prism.highlightAllUnder(element));
 };

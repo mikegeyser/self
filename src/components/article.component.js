@@ -84,7 +84,8 @@ class Article extends connect(store)(PageViewElement) {
       const pageTitle = this.article.title + ' // mikerambl.es';
       updateMetadata({
         title: pageTitle,
-        description: pageTitle
+        description: this.article.summary,
+        url: window.location.url
       });
     }
   }
