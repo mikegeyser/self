@@ -8,7 +8,7 @@
     "watch": "npx eleventy --watch",
     "debug": "DEBUG=* npx eleventy",
     "dev:del": "rm -rf build",
-    "dev:eleventy": "ELEVENTY_ENV=development eleventy --serve --quiet",
+    "dev:eleventy": "ELEVENTY_ENV=development eleventy --config=./tools/11ty/11ty.config.js --serve --quiet",
     "dev:webpack": "webpack --config ./tools/webpack/webpack.config.js --watch",
     "prod:del": "rimraf build",
     "prod:webpack": "webpack -p --config webpack.prod.js",
