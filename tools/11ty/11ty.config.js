@@ -30,7 +30,7 @@ module.exports = function(eleventyConfig) {
     return array.slice(0, n);
   });
 
-  eleventyConfig.addCollection('tagList', require('./tools/11ty/helpers/getTagList'));
+  eleventyConfig.addCollection('tagList', require('./helpers/getTagList'));
 
   eleventyConfig.addPassthroughCopy('src/img');
   eleventyConfig.addPassthroughCopy('src/images');
