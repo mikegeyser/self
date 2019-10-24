@@ -2,10 +2,10 @@
 date: 2019-05-20
 revised: 2019-05-27
 title: 'Wrangling Redux: reducer size'
-key: 'wrangling-redux-reducer-size',
-path: '/content/articles/2019/05/2019-05-20-wrangling-redux-reducer-size.md',
+key: 'wrangling-redux-reducer-size'
+path: '/content/articles/2019/05/2019-05-20-wrangling-redux-reducer-size.md'
 issue: '1'
-image: null,
+image: null
 languages: 
   - 'json'
 ---

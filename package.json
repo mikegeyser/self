@@ -1,47 +1,33 @@
 {
-  "name": "pwa-starter-kit",
-  "version": "0.9.0",
-  "contributors": [
-    "The Polymer Authors"
-  ],
-  "license": "BSD-3-Clause",
-  "repository": "Polymer/pwa-starter-kit",
+  "name": "eleventy-base-blog",
+  "version": "5.0.0",
+  "description": "A starter repository for a blog web site using the Eleventy static site generator.",
   "scripts": {
-    "start": "polymer serve",
-    "build": "polymer build && workbox generateSW workbox-config.js",
-    "serve": "polymer serve --port 5000 build/es5-bundled",
-    "test": "npm run test:unit && npm run test:integration",
-    "test:integration": "mocha test/integration --timeout=10000",
-    "test:unit": "polymer test --module-resolution=node --npm",
-    "test:sauce": "polymer test --module-resolution=node --npm -s 'windows 10/microsoftedge@17' -s 'macos 10.13/safari@11'",
-    "test:regenerate_screenshots": "mocha test/integration/screenshots-baseline/regenerate.js --timeout=15000"
+    "start": "eleventy --serve",
+    "build": "npx eleventy",
+    "watch": "npx eleventy --watch",
+    "debug": "DEBUG=* npx eleventy"
   },
-  "dependencies": {
-    "@polymer/app-layout": "^3.0.0",
-    "@polymer/polymer": "^3.1.0",
-    "@webcomponents/webcomponentsjs": "^2.2.4",
-    "lit-element": "^2.0.1",
-    "prismjs": "^1.16.0",
-    "pwa-helpers": "^0.9.0",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0",
-    "showdown": "^1.9.0"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/11ty/eleventy-base-blog.git"
   },
+  "author": {
+    "name": "Zach Leatherman",
+    "email": "zachleatherman@gmail.com",
+    "url": "https://zachleat.com/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/11ty/eleventy-base-blog/issues"
+  },
+  "homepage": "https://github.com/11ty/eleventy-base-blog#readme",
   "devDependencies": {
-    "@polymer/test-fixture": "^4.0.2",
-    "axe-core": "^3.0.0",
-    "chai": "^4.1.2",
-    "del": "^3.0.0",
-    "gulp": "^4.0.0",
-    "gulp-rename": "^1.3.0",
-    "gulp-replace": "^1.0.0",
-    "mocha": "^5.2.0",
-    "pixelmatch": "^4.0.2",
-    "polymer-cli": "^1.9.3",
-    "polyserve": "^0.27.0",
-    "prpl-server": "^1.4.0",
-    "puppeteer": "^1.5.0",
-    "wct-mocha": "^1.0.0"
+    "@11ty/eleventy": "^0.9.0",
+    "@11ty/eleventy-plugin-rss": "^1.0.7",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.3",
+    "luxon": "^1.12.0",
+    "markdown-it": "^8.4.2",
+    "markdown-it-anchor": "^5.0.2"
   }
 }
