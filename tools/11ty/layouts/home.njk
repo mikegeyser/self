@@ -1,5 +1,6 @@
----
-layout: base.njk
-templateClass: tmpl-home
----
-{{ content | safe }}
+{% extends 'base.njk' %}
+
+{% block scripts %}
+  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="js/index.js" type="module"></script>
+{% endblock %}

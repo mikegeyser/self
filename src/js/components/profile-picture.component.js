@@ -1,0 +1,66 @@
+import { html, LitElement } from 'lit-element';
+import { profilePicture } from './svg-pictures.js';
+
+let styles = html`
+  <style>
+    .profile-picture {
+      height: 25vw;
+      width: 25vw;
+      overflow: hidden;
+      border-radius: 20em;
+      position: relative;
+      float: left;
+      margin: 1em 1em 1em 0;
+    }
+
+    .profile-picture svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      transition: opacity 500ms linear;
+    }
+
+    .profile-picture img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      transition: opacity 500ms linear;
+    }
+  </style>
+`;
+
+class ProfilePicture extends LitElement {
+  render() {
+    return html`
+      ${styles}
+      
+      <div id="profile-picture" class="profile-picture">
+        ${profilePicture}
+      </div>
+    `;
+  }
+
+  static get properties() {
+    return {};
+  }
+
+  firstUpdated() {
+    const img = new Image();
+    img.src = 'images/profile-picture.jpg';
+    img.style.opacity = '0';
+
+    img.onload = () => {
+      const parent = this.shadowRoot.getElementById('profile-picture');
+      const placeholder = parent.getElementsByTagName('svg')[0];
+      placeholder.style.opacity = '0';
+      setTimeout((_) => placeholder.remove(), 500);
+
+      parent.appendChild(img);
+      setTimeout((_) => (img.style.opacity = '1'), 1);
+    };
+  }
+}
+
+window.customElements.define('profile-picture', ProfilePicture);

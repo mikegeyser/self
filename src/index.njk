@@ -4,12 +4,13 @@ tags:
   - nav
 navtitle: Home
 ---
+
+{% block head %}
 <link rel="stylesheet" href="css/home.css">
+{% endblock %}
 
 <div class="container">
-  <div id="profile-picture" class="profile-picture">
-    ${profilePicture}
-  </div>
+  <profile-picture></profile-picture>
 
   <div class="paragraph">
     <h1>
