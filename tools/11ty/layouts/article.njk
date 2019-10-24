@@ -1,0 +1,9 @@
+---
+layout: base.njk
+templateClass: tmpl-post
+---
+<h1>{{ title }}</h1>
+<time datetime="{{date}}">Originally written on {{ date | readableDate }}. Revised on {{revised | readableDate}}.</time>
+
+{{ content | safe }}
+

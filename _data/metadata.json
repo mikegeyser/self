@@ -1,0 +1,16 @@
+{
+  "title": "// mikerambl.es",
+  "url": "https://mikerambl.es/",
+  "description": "",
+  "feed": {
+    "subtitle": "",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "url": "https://mikerambl.es/feed/feed.xml",
+    "id": "https://mikerambl.es/"
+  },
+  "author": {
+    "name": "Mike Geyser",
+    "email": "youremailaddress@example.com"
+  }
+}

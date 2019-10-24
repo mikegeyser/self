@@ -1,0 +1,5 @@
+{
+  "permalink": "article/{{ key }}/index.html",
+  "layout": "article",
+  "tags": ["articles"]
+}

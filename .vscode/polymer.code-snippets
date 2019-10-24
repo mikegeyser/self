@@ -1,0 +1,51 @@
+{
+  "Create a redux action": {
+    "scope": "javascript,typescript",
+    "prefix": "_action",
+    "body": [
+      "export const ${2:ACTION_NAME} = '${2:ACTION_NAME}';",
+      "",
+      "export const ${1:actionName} = (${3:params}) => {",
+      "    return {",
+      "        type: ${2:ACTION_NAME},",
+      "        ${3:params}",
+      "    };",
+      "}"
+    ],
+    "description": "Log output to console"
+  },
+  "Create a LitElement component": {
+    "scope": "",
+    "prefix": "_component",
+    "body": [
+      "import { html, LitElement } from 'lit-element';",
+      "import { SharedStyles } from './shared-styles.js';",
+      "import { connect } from 'pwa-helpers/connect-mixin.js';",
+      "import { store } from '../store.js';",
+      "",
+      "let styles = html`",
+      "  <style></style>",
+      "`;",
+      "",
+      "class ${1:ClassName} extends connect(store)(LitElement) {",
+      "    render() {",
+      "        return html`",
+      "            \\${SharedStyles}",
+      "            \\${styles}",
+      "        `;",
+      "    }",
+      "",
+      "    static get properties() {",
+      "        return {",
+      "        };",
+      "    }",
+      "",
+      "    stateChanged(state) {",
+      "    }",
+      "",
+      "}",
+      "",
+      "window.customElements.define('e-${2:element-name}', ${1:ClassName});"
+    ]
+  }
+}
