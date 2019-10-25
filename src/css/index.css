@@ -1,6 +1,6 @@
 :root {
   --max-width: 1000px;
-  --header-height: 7vh;
+  --header-height: 3.5em;
   --footer-height: var(--header-height);
   --main-min-height: 77vh;
   --red: #c5004a;
@@ -11,6 +11,8 @@
   --navy: #17050f;
   --blue: #082840;
   --white: #fff;
+  --main-font: 'Open Sans', sans-serif;
+  --accent-font: 'Indie Flower', sans-serif;
 }
 
 * {
@@ -21,17 +23,30 @@ body {
   padding: 0;
   margin: 0;
   width: 100%;
-  font-family: sans-serif;
+  font-family: var(--main-font);
   color: var(--darkgray);
   background-color: var(--white);
-  font-size: 1.1rem;
+  font-size: 13pt;
+  line-height: 19pt;
+}
+
+@media (min-width: 460px) {
+  html,
+  body {
+    font-size: 15pt;
+    line-height: 20pt;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--accent-font);
 }
 
 /* Nav css */
 header {
   width: 100%;
   height: var(--header-height);
-  border-bottom: 1px dashed var(--lightgray);
+  border-bottom: 1px solid var(--lightgray);
 }
 
 header:after {
@@ -42,6 +57,7 @@ header:after {
 
 nav {
   max-width: var(--max-width);
+  height: var(--header-height);
   display: flex;
   margin: auto;
   padding: 1em 0;
@@ -74,6 +90,10 @@ nav a {
 }
 
 @media (max-width: 460px) {
+  nav {
+    padding-left: 1em;
+  }
+
   nav > ul {
     display: none;
   }
@@ -93,8 +113,7 @@ time {
 }
 
 p {
-  font-size: 15pt;
-  line-height: 20pt;
+  
   text-align: justify;
 }
 
