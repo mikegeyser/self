@@ -4,13 +4,11 @@ import { profilePicture } from './svg-pictures.js';
 let styles = html`
   <style>
     .profile-picture {
-      height: 25vw;
-      width: 25vw;
+      height: var(--profile-picture-dimension);
+      width: var(--profile-picture-dimension);
       overflow: hidden;
       border-radius: 20em;
       position: relative;
-      float: left;
-      margin: 1em 1em 1em 0;
     }
 
     .profile-picture svg {
@@ -35,7 +33,7 @@ class ProfilePicture extends LitElement {
   render() {
     return html`
       ${styles}
-      
+
       <div id="profile-picture" class="profile-picture">
         ${profilePicture}
       </div>
