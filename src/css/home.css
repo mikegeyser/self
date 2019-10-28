@@ -1,5 +1,5 @@
 .container {
-  --profile-picture-dimension: 25vw;
+  --profile-picture-dimension: 20vh;
 
   display: grid;
   grid-template-columns: var(--profile-picture-dimension) auto;
@@ -27,6 +27,7 @@
 }
 
 @media (min-width: 460px) {
+
   h1 {
     font-size: 4em;
   }
