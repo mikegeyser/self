@@ -1,3 +1,5 @@
+import 'css-paint-polyfill';
+
 if ('paintWorklet' in CSS) {
-  CSS.paintWorklet.addModule('./js/sketchy-underline.js');
-}
+  CSS.paintWorklet.addModule(`${window.location.origin}/js/sketchy-underline.js`);
+} 
