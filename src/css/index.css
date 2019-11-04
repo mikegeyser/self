@@ -302,3 +302,32 @@ iframe.embedded-video {
   margin: 0 1em 0.5em 1em;
 }
 
+/* Sketchiness (CSS paint worklet) */
+.sketchy-underline {
+  --lineNumber: 3;
+  --lineSpread: 1;
+  --lineWidth: 3;
+  background-image: paint(sketchyUnderline);
+  padding-bottom: 15px;
+}
+
+header.sketchy-underline {
+  --lineNumber: 1;
+  --lineWidth: 2;
+  border-bottom: none;
+  background-image: paint(sketchyUnderline);
+}
+
+h1.sketchy-underline {
+  padding: 0 15px 45px 15px;
+}
+
+.sketchy-link {
+  --lineColor: blue;
+  --lineWidth: 1;
+  padding: 0 15px 15px 15px;
+}
+
+.sketchy-link > a {
+  text-decoration: none;
+}
