@@ -14,7 +14,7 @@ You have to understand that I come from a background of building scalable, trans
 
 Excitement aside, this is not simply a love letter to Redux. There are many significant challenges to working with Redux, particularly if you approach it naively. It still has an incredibly steep learning curve, and a number of 'easy to stumble into' problems. Needless to say, I have stumbled into some of these problems, and I'd like to share some of my learnings.
 
-### The problem of objects
+## The problem of objects
 
 Object-orientation is like one of those 4lbs hammers. You know the ones I mean; the masonry ones, of middling size, used for smashing bricks. It's a thing that can be used in a variety of situations, but isn't well suited for many of them. It doesn't break bricks as well as power tools, turns nails into a smear of metal against whatever you're hitting, and is pretty unwieldy and hard to use. The problem with it (both OO and hammers, I suppose), is that it's typically the first tool that you reach for in your toolbox. Let's look at an example.
 
@@ -166,7 +166,7 @@ Now... There are many problems with this code. It's deeply nested, and confusing
 
 Turns out that this is a relatively common problem in Redux, which can be overcome by [normalising the state shape](https://redux.js.org/recipes/structuring-reducers/normalizing-state-shape). Like with so much in software, we stumbled across this solution ourselves without knowing what it was called. (I suppose this is where I pass some pithy comment about [there being no new ideas](https://www.goodreads.com/quotes/843880-there-is-no-such-thing-as-a-new-idea-it)?)
 
-### A side of reselect
+## A side of reselect
 
 The selector example in the previous section is a relatively common pattern in redux. By encapsulating the state access behind a function, we can try and isolate our state tree from our component. This means that if we change how we access our state, it won't affect our component code, and it allows us to re-use the selector consistently across our application.
 
@@ -174,7 +174,7 @@ We can take this even further by using a library called [reselect](https://githu
 
 It's highly likely that I'll post more about reselect again in the future, but for the moment it's important to note that it is heavily used in the solution proposed below.
 
-### Normalising the state
+## Normalising the state
 
 So instead of directly translating the relational structure into an object structure, we can instead return something closer to the 'raw' data from the request. The only challenge we have is collapsing the linking tables (such as TrackCourses and CourseSections), as it is information we need. We end up with something along the lines of:
 
@@ -336,9 +336,9 @@ export const selectTrackProgress = createSelector(
 
 While they're not perfect, I believe that it's much improved. We now have a set of composeable, memoised functions that circumvented a lot of the problems in the previous example. Each individual selector is a simple function, or has a simple result function, that can be understood and tested in isolation. Without memoisation it is still not very performant code, but considering that Redux is built on a foundation of it, I feel that's a reasonable assumption to make.
 
-### Conclusion.
+## Conclusion.
 
-![Fix this nightmare](/content/articles/2019/05/images/redux-fix-this-nightmare.png)
+![Fix this nightmare](/img/redux-fix-this-nightmare.png)
 
 There are, however, a few challenges to be aware of when turning your model inside-out. They primarily hinge around the fact that you don't have a single canonical model of your domain, and instead have to piece together your model from the actions, reducers and selectors scattered across your solution. As much as I'm not a big TypeScript fan, I feel like the reducer state would benefit greatly from having some guarantees as to what you can expect to be on the tree.
 

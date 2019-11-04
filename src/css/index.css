@@ -131,6 +131,11 @@ p:last-child {
   margin-bottom: 0;
 }
 
+p > img {
+  display: block;
+  margin: auto;
+}
+
 section {
   padding: 24px;
 }
