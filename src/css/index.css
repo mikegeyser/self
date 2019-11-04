@@ -42,6 +42,16 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--accent-font);
 }
 
+h2 {
+  font-size: 28pt;
+  line-height: 32pt;
+}
+
+h2 > a {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* Nav css */
 header {
   width: 100%;
@@ -131,18 +141,19 @@ section > * {
   margin-left: auto;
 }
 
-section:nth-of-type(even) {
+/* section:nth-of-type(even) {
   background: rgb(247,247,247);
-}
+} */
 
 /* Footer*/
 footer {
   display: block;
   height: var(--footer-height);
   margin-top: 5em;
-  padding: 2em;
+  padding: 2em 2em 4em 2em;
   background-color: var(--darkgray);
   color: var(--white);
+  font-size: 12pt;
 }
 
 footer > div {
@@ -311,11 +322,16 @@ iframe.embedded-video {
   padding-bottom: 15px;
 }
 
-header.sketchy-underline {
-  --lineNumber: 1;
+header.sketchy-underline, 
+section.sketchy-underline {
+  --lineNumber: 2;
   --lineWidth: 2;
   border-bottom: none;
   background-image: paint(sketchyUnderline);
+}
+
+section.sketchy-underline {
+  padding-bottom: 45px;
 }
 
 h1.sketchy-underline {
@@ -323,8 +339,10 @@ h1.sketchy-underline {
 }
 
 .sketchy-link {
+  --lineNumber: 1;
   --lineColor: blue;
   --lineWidth: 1;
+  --lineSpread: 1;
   padding: 0 15px 15px 15px;
 }
 
