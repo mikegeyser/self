@@ -121,6 +121,20 @@ p:last-child {
   margin-bottom: 0;
 }
 
+section {
+  padding: 24px;
+}
+
+section > * {
+  max-width: var(--max-width);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+section:nth-of-type(even) {
+  background: rgb(247,247,247);
+}
+
 /* Footer*/
 footer {
   display: block;
@@ -281,3 +295,10 @@ a[href].direct-link:focus:visited,
 :hover > a[href].direct-link:visited {
   color: #aaa;
 }
+
+/* Embedded video */
+iframe.embedded-video {
+  float: left;
+  margin: 0 1em 0.5em 1em;
+}
+
