@@ -109,8 +109,8 @@ nav a {
 
 @media (max-width: 460px) {
   header {
-  --header-height: 5.5em;
-
+    --header-height: 7em;
+    --tappable-height: 42px;
     width: 100%;
     height: auto;
     border-bottom: 1px solid var(--lightgray);
@@ -118,18 +118,35 @@ nav a {
   
   nav {
     flex-direction: column;
+    padding: 0;
+  }
+
+  nav a {
+    display: inline-block;
+    height: var(--tappable-height);
   }
 
   nav > h1 {
-    padding-left: 1em;
+    margin: 18px 16px 0 16px;
   }
 
   nav > ul {
     width: 100%;
-    margin: 16px 0;
+    height: var(--tappable-height);
+    /* margin: 8px 0; */
     padding: 0;
     justify-content: space-evenly;
     align-items: center;
+  }
+
+  nav > ul > li {
+    height: var(--tappable-height);
+  }
+
+  nav > ul > li > a {
+    display: inline-block;
+    height: var(--tappable-height);
+    padding-top: 12px;
   }
 }
 

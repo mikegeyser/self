@@ -47,6 +47,7 @@ class ProfilePicture extends LitElement {
   firstUpdated() {
     const img = new Image();
     img.src = 'images/profile-picture.jpg';
+    img.alt = 'Profile picture for Mike Geyser';
     img.style.opacity = '0';
 
     img.onload = () => {
