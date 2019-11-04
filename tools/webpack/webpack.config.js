@@ -20,6 +20,6 @@ const base = {
   }
 };
 
-let config = merge(base, devServer, babel);
+let config = merge(base, devServer, babel, copy);
 
 module.exports = config;
