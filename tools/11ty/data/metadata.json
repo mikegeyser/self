@@ -1,7 +1,7 @@
 {
   "title": "// mikerambl.es",
   "url": "https://mikerambl.es/",
-  "description": "",
+  "description": "A place where I ramble about JavaScript and the Web.",
   "feed": {
     "subtitle": "",
     "filename": "feed.xml",
@@ -11,6 +11,6 @@
   },
   "author": {
     "name": "Mike Geyser",
-    "email": "youremailaddress@example.com"
+    "email": ""
   }
 }

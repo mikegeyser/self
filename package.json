@@ -1,33 +1,28 @@
 {
-  "name": "eleventy-base-blog",
-  "version": "5.0.0",
-  "description": "A starter repository for a blog web site using the Eleventy static site generator.",
+  "name": "mikerambl.es",
+  "version": "3.0.0",
+  "description": "A place where I ramble about JavaScript and the Web.",
   "scripts": {
     "start": "npm-run-all --parallel dev:*",
-    "build": "npx eleventy",
-    "watch": "npx eleventy --watch",
-    "debug": "DEBUG=* npx eleventy",
+    "build": "npm-run-all prod:*",
     "dev:del": "rm -rf build",
-    "dev:eleventy": "ELEVENTY_ENV=development eleventy --config=./tools/11ty/11ty.config.js --serve",
     "dev:webpack": "webpack --config ./tools/webpack/webpack.config.js --watch",
+    "dev:11ty": "ELEVENTY_ENV=development eleventy --config=./tools/11ty/11ty.config.js --serve",
     "prod:del": "rimraf build",
-    "prod:webpack": "webpack -p --config webpack.prod.js",
-    "prod:serve": "ELEVENTY_ENV=production eleventy --output=./build"
+    "prod:webpack": "webpack -p --config ./tools/webpack/webpack.config.js",
+    "prod:11ty": "ELEVENTY_ENV=production eleventy --config=./tools/11ty/11ty.config.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/11ty/eleventy-base-blog.git"
-  },
-  "author": {
-    "name": "Zach Leatherman",
-    "email": "zachleatherman@gmail.com",
-    "url": "https://zachleat.com/"
+    "url": "git://github.com/mikegeyser/self"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/11ty/eleventy-base-blog/issues"
+  "homepage": "https://mikerambl.es",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.3.0",
+    "css-paint-polyfill": "^1.0.3",
+    "lit-element": "^2.2.1"
   },
-  "homepage": "https://github.com/11ty/eleventy-base-blog#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.9.0",
     "@11ty/eleventy-plugin-rss": "^1.0.7",
@@ -45,10 +40,5 @@
     "webpack-cli": "^3.3.9",
     "webpack-merge": "^4.2.2",
     "workbox-webpack-plugin": "^4.3.1"
-  },
-  "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.3.0",
-    "css-paint-polyfill": "^1.0.3",
-    "lit-element": "^2.2.1"
   }
 }
