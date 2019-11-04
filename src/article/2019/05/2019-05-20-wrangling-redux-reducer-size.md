@@ -338,7 +338,7 @@ While they're not perfect, I believe that it's much improved. We now have a set 
 
 ## Conclusion.
 
-![Fix this nightmare](/img/redux-fix-this-nightmare.png)
+![Fix this nightmare](/images/articles/redux-fix-this-nightmare.png)
 
 There are, however, a few challenges to be aware of when turning your model inside-out. They primarily hinge around the fact that you don't have a single canonical model of your domain, and instead have to piece together your model from the actions, reducers and selectors scattered across your solution. As much as I'm not a big TypeScript fan, I feel like the reducer state would benefit greatly from having some guarantees as to what you can expect to be on the tree.
 
