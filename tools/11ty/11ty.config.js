@@ -10,7 +10,6 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addLayoutAlias('article', 'article.njk');
   eleventyConfig.addLayoutAlias('video', 'video.njk');
-  eleventyConfig.addLayoutAlias('post', 'post.njk');
 
   eleventyConfig.addFilter('readableDate', (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('dd LLL yyyy');
