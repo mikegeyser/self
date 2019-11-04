@@ -1,0 +1,26 @@
+---
+layout: home.njk
+tags:
+  - nav
+navtitle: Videos
+---
+
+{% for video in collections.videos | reverse %}
+  <section>
+    <article>
+      <iframe
+        class="embedded-video"
+        width="400"
+        height="250"
+        src="https://www.youtube.com/embed/{{ video.data.id }}"
+        loading="lazy"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <h2>{{ video.data.title }}</h2>
+      <div>{{ video.date | readableDate }}</div>
+      <p>{{ video.data.description }}</p>
+    </article>
+  </section>
+{% endfor %}
