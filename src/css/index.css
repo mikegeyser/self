@@ -1,6 +1,6 @@
 :root {
   --max-width: 1000px;
-  --header-height: 3.5em;
+  --header-height: 4em;
   --footer-height: var(--header-height);
   --main-min-height: 77vh;
   --red: #c5004a;
@@ -378,38 +378,39 @@ iframe.embedded-video {
 }
 
 /* Sketchiness (CSS paint worklet) */
-.sketchy-underline {
-  --lineNumber: 3;
-  --lineSpread: 1;
-  --lineWidth: 3;
-  background-image: paint(sketchyUnderline);
+.rough-underline {
+  --rough-stroke: black;
+  --rough-stroke-width: 2px;
+  --rough-roughness: 3;
+  background-image: paint(rough-underline);
   padding-bottom: 15px;
 }
 
-header.sketchy-underline, 
-section.sketchy-underline {
+header.rough-underline, 
+section.rough-underline {
   --lineNumber: 2;
   --lineWidth: 2;
   border-bottom: none;
-  background-image: paint(sketchyUnderline);
+  background-image: paint(rough-underline);
 }
 
-section.sketchy-underline {
+section.rough-underline {
   padding-bottom: 45px;
 }
 
-h1.sketchy-underline {
+h1.rough-underline {
   padding: 0 15px 45px 15px;
 }
 
-.sketchy-link {
-  --lineNumber: 1;
-  --lineColor: blue;
-  --lineWidth: 1;
-  --lineSpread: 1;
+.rough-link {
+  --rough-stroke: blue;
+  --rough-stroke-width: 1px;
+  --rough-roughness: 3;
+  display: inline-block;
+  height: 47px;
   padding: 0 15px 15px 15px;
 }
 
-.sketchy-link > a {
+.rough-link > a {
   text-decoration: none;
 }

@@ -6,7 +6,7 @@ navtitle: Articles
 ---
 
 {% for article in collections.articles | reverse %}
-  <section class="sketchy-underline">
+  <section class="rough-underline">
     <article>
       <h2><a href="/article/{{article.data.key}}">{{article.data.title}}</a></h2>
       <div>{{ article.date | readableDate }}</div>
