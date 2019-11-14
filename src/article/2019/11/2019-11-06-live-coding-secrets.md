@@ -26,19 +26,18 @@ For almost everyone that talks about development topics, coding is "Job #1". It'
 
 ### Suspension of disbelief
 
-When someone shows you a snippet of code, and tells you that's all you need to be able to do something - you are well within your right to be skeptical. I've often attempted something following a presentation, and found myself disappointed that it doesn't necessarily work as advertised. On the other side, as a speaker, I've tried to fit code on a slide and wrestled with how much can be stripped away before all nuance and meaning is lost.
+When someone shows you a snippet of code, and tells you that's all you need to be able to do something - you are well within your right to be skeptical. I've often attempted to replicate some code from presentation, and found myself disappointed that it doesn't necessarily work as advertised. On the other side, as a speaker, I've tried to fit code on a slide and wrestled with how much can be stripped away before all nuance and meaning is lost.
 
-Live coding requires you, as a speaker, to present inherently practical examples. It has to be a thing that you can type out (one way, or another) within a time limit, and it has to illustrate the point that you're trying to make. These are hard constraints, but are very liberating in their own way. You have to pare down your implementation to the minimal viable example of how something could work
+Live coding requires you, as a speaker, to present inherently practical examples. It has to be a thing that you can type out (one way, or another) within a time limit, and it has to illustrate the point that you're trying to make. These are hard constraints, but are very liberating in their own way. You have to pare down your implementation to the minimal viable example of of a thing that works. You have to brutally apply Occam's razor to your talk, and cut away any detail that can distract from the focus of your talk.
 
-- Compelling way to explain implementation.
-  - Inherently practical examples.
-- Suspension of disbelief
-  - Seeing is believing. If it can be done live in a talk, then it must be accessible.
-- Alternatives
-  - A lot can go wrong.
-  - Audience of inconsistent background.
-  - Rules behind showing code still apply.
-    - Max 7 lines of code per slide.
+This means that live coding can be a very compelling way to illustrate implementation, and creates this suspension of disbelief within the audience. They have seen you do 'the thing' therefore: 1) 'the thing' is real, and 2) there is nothing stopping them from going home and doing 'the thing'. This facet alone, the ability to encourage people to go and try what you've been talking about, it immensely rewarding.
+
+### On the other hand...
+
+Let's be real, there is a lot that can go wrong; some of it you can control, but much of it you can't. Just because you can't control it, doesn't mean that you can't prepare for the eventuality, and turn a bad situation into an amazing talk. The rest of this article will essentially concentrate on preparation and execution.
+
+
+> I would like to call out the single hardest factor to control: the audience. Many a good talk has struggled to land, purely because the wrong audience was sitting in the room. At smaller, or more specialised conferences, this may not be a concern, but at the larger developer events it is a real problem. You're likely going to speak at a an audience of wildly different backgrounds and levels of expertise, and it's something you're going to have to prepare for.
 
 ## Preparation
 
@@ -80,7 +79,8 @@ Live coding requires you, as a speaker, to present inherently practical examples
     - At an OS level, can work with applications that don't have snippet support.
     - Be careful of keyloggers.
 - Notes
-
+  -  Rules behind showing code still apply.
+    - Max 7 lines of code per slide.
   - Find what works for you.
   - https://github.com/mikegeyser/building-pwas-with-angular
 
@@ -107,8 +107,10 @@ Live coding requires you, as a speaker, to present inherently practical examples
     - Own the problem, use it as an opportunity to engage the audience.
     - NEVER BE QUIET! Tell them what you're trying.
     - Explain what went wrong when you find and fix it. Prime learning opportunity.
+
   - Learn to cut and run
     - Fall back to backup plan.
+    - Scott hanselmann and the extra laptop.
     - How long you struggle for will depend on the impact of that part of the talk.
     - If its really important, you should have a backup for it.
 
