@@ -41,20 +41,28 @@ Let's be real, there is a lot that can go wrong; some of it you can control, but
 
 ## Preparation
 
+### Narrative
+
+Live coding is not just 'building a thing', nor is it showing code. Live coding in a talk is there to advance the narrative of the talk, as much as slides are, and it's important to think of it as such when preparing. In any good narrative you need to have a high-level thread through the talk, a simple-to-follow moral-of-the-story, if you will. This is so that even when your audience isn't following along, or your demo tanks spectacularly, there is a concrete conclusion that the audience can take away. Every decision that you make, in terms of what you do in your demo, needs to support this high level narrative in some way, shape or form. Your audience should never be left wondering 'what was the purpose of the talk?', even if you have to be blunt about it in your conclusion (and in fact, it is recommended).
+
+The high level narrative acts as the [carrier frequency](https://en.wikipedia.org/wiki/Carrier_wave) for the technical content of your demo. You're going to bake the detail into each of the phases of the talk, being very careful not to break the overarching rhythym. Continuing with the wave metaphor, you need to be aware of the peaks and troughs of your talk, as well as where the [inflection points](https://en.wikipedia.org/wiki/Inflection_point) of your narrative are. You will delve into the (likely increasing) layers of complexity in short bursts, and then pause to reinforce the over arching narrative of your talk. This can be as simple as showing the effect of the changed code on the UI, and giving the audience a chance to digest the implication. While it's possible to have a big-bang reveal at the end, it is a delicate balance, because the longer you proceed without pausing, the greater the risk of losing the audience. 
+
 - Narrative
   - How will it progress.
   - How will you tell the story.
     - Sometimes it's how you implement it, sometimes its layers of complexity.
 - Theme
-
   - Something accessible, but relevant.
   - Opportunity audience engagement, such as humor or participation.
 
+### Build a reference application
 - Build a reference application
   - End state
 - Slice it up into small steps
   - Size the steps
   - Figure out timings
+
+## Different styles of live coding
 - Styles
   - Write it all
     - Highest risk
@@ -78,6 +86,8 @@ Let's be real, there is a lot that can go wrong; some of it you can control, but
   - Text expansion
     - At an OS level, can work with applications that don't have snippet support.
     - Be careful of keyloggers.
+
+
 - Notes
   -  Rules behind showing code still apply.
     - Max 7 lines of code per slide.
