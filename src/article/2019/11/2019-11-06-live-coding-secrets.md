@@ -130,12 +130,9 @@ Firstly: don't panic! Own the problem, and use it as an opportunity to engage th
 
 ### Exercise judgement
 
-  - Learn to cut and run
-    - Fall back to backup plan.
-    - Scott hanselmann and the extra laptop.
-    - How long you struggle for will depend on the impact of that part of the talk.
-    - If its really important, you should have a backup for it.
-    - Pay attention to the situation
+While there is value in resolving a problem and getting the demo on track, one needs to be incredibly careful at the time sink that it can become. While you can prepare for things to go wrong, and cut parts of your demo, but you may still put time pressure on you to finish. There's no universally correct answer, but you will need to develop good judgement around when to cut-and-run to your backup plan (which you will have, right?). Keep track of how much time you're sinking into it, and pay attention to the situation with the audience. You'll very quickly realise what the awkward silence of losing people sounds like... If you have people involved and looking for a fix, roll with it for a while - because it means that they're engaged.
+
+> _Hardware or OS failure happens. It's a thing, and it's one of the hardest demo-fails to recover from. I recommend that you should have a back-up machine, or a fellow speaker that has your demo-code on it._
 
 ## Examples
 
@@ -145,3 +142,5 @@ Firstly: don't panic! Own the problem, and use it as an opportunity to engage th
 ## Conclusion
 
 Hm?
+
+Remember the purpose of live-coding is not the code itself, but i
