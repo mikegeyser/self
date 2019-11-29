@@ -116,24 +116,17 @@ On the morning of I will go through me demo silently several times, probably bet
 
 ### Visibility
 
-  - Use a light, high-contrast editor theme
-  - Most versatile in different lighting conditions
-  - Set a large font size on your editor
-  - Don't move quickly. Slow and purposeful.
-  - Keyboard shortcuts?
-    - Narrate what you're doing. Literally tell them what you're pressing.
-  - Don't forget the terminal!
-    - Scroll the output to the top (CMD-R or equivalent)
-    - So that it's visible to the people in the back.
+Use high-visibility, high-contrast themes on a light background everywhere. It has the greatest versatility, for the widest range of lighting conditions. Use a good, unambiguous mono-spaced font and bump up the size to 18 point or more (and check this ASAP when you get to the venue, as a part of your tech check). I know you may have spent a lot of time cultivating your super-sweet dark mode theme with custom font ligatures, and want to show it off, but this is neither the time nor the place. If people can't see what you're typing, your whole talk will flop. I find it incredibly frustrating, considering how easy it is, that so many speakers get this wrong.
+
+Slow down! When navigating between windows or tabs, and when scrolling across the document, you want to apply the same logic as moving on the stage. Don't rush, move slowly and with purpose. If you jank the scroll bar around, frantically alt-tab, or otherwise struggle around on your PC - you will lose the audience. I find that it's far more distracting and damaging than pacing on stage. I am fond of knowing the appropriate keyboard shortcut for any action (I am a keyboard oriented developer), and I believe that it's the best way to navigate in these circumstances. **BUT**... Keep in mind that keyboard shortcuts can seem incredibly arcane, and while it's not terrible to have your audience wondering _'how did they do that?'_, you want to avoid it. Get in the habit of explaining what you're doing, which shortcuts you're using (not which keys you're pressing, but rather what you're accomplishing). Know your shortcuts, practice using them in situ and practice narrating what you're doing. If you are not a keyboard person, there's nothing
+
+> _Don't forget the terminal. Change the terminal colour scheme and font-size as well, and make sure that the terminal is visible to the room. Often terminal input is at the bottom of the screen, and so, depending on the seating, may be hidden from most of the room. Your terminal will have a `clear` or `scroll top` of alternative (on iTerm it's CMD-R / ⌘-R), and practice using that before typing any command in._
 
 ### Keep talking
-  - Typing and talking
-    - Hardest part.
-  - When (not if) things go wrong.
-    - Own the problem, use it as an opportunity to engage the audience.
-    - NEVER BE QUIET! Tell them what you're trying.
-    - Explain what went wrong when you find and fix it. Prime learning opportunity.
 
+Forget anything I said before, this is **literally** the hardest part. Unless you pair-program every day, and sometimes not even then, it's likely that you're unaccustomed to vocalising your thoughts while you code. Unfortunately, while presenting you can never (ever, ever) keep quiet, because you will lose the audience immediately. There is some of it that can practice, being the _happy-path_ of your presentation, but there is some that you can't, such as when things go wrong...
+
+Firstly: don't panic! Own the problem, and use it as an opportunity to engage the audience. See if they can spot what went wrong, and help rectify it. (If you have any swag, this is a great time to give it out.) Talk through your reasoning, and what you're doing while you figure out what went wrong. Crucially, when you find the problem, explain to the audience what went wrong and how you fixed it - don't just fix it and keep going. This is a prime opportunity to engage the audience, for them to learn something and for them to see that there is no smoke and no mirrors.
 
 ### Exercise judgement
 
