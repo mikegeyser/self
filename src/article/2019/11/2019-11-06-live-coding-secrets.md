@@ -3,7 +3,7 @@ date: 2019-11-06
 revised: 2019-11-09
 title: Secrets of live coding
 key: live-coding-secrets
-description:  I really enjoy both delivering and watching live coding talks. Sure, there are some rough ones every now and then, but overall I find that there's a lot of value to be gained in watching and understanding how someone else goes about coding.
+description: I really enjoy both delivering and watching live coding talks. Sure, there are some rough ones every now and then, but overall I find that there's a lot of value to be gained in watching and understanding how someone else goes about coding. The sense of connection to the crowd, the engagement, the suspension of disbelief and the motivational factor all make live-coding truly rewarding.
 ---
 
 Live coding makes both speakers and conference organisers nervous.
@@ -38,7 +38,6 @@ This means that live coding can be a very compelling way to illustrate implement
 
 Let's be real, there is a lot that can go wrong; some of it you can control, but much of it you can't. Just because you can't control it, doesn't mean that you can't prepare for the eventuality, and turn a bad situation into an amazing talk. The rest of this article will essentially concentrate on preparation and execution.
 
-
 > I would like to call out the single hardest factor to control: the audience. Many a good talk has struggled to land, purely because the wrong audience was sitting in the room. At smaller, or more specialised conferences, this may not be a concern, but at the larger developer events it is a real problem. You're likely going to speak at a an audience of wildly different backgrounds and levels of expertise, and it's something you're going to have to prepare for.
 
 ## Preparation - there can never be too much
@@ -47,38 +46,36 @@ Let's be real, there is a lot that can go wrong; some of it you can control, but
 
 Live coding is not just 'building a thing', nor is it showing code. Live coding in a talk is there to advance the narrative of the talk, as much as slides are, and it's important to think of it as such when preparing. In any good narrative you need to have a high-level thread through the talk, a simple-to-follow moral-of-the-story, if you will. This is so that even when your audience isn't following along, or your demo tanks spectacularly, there is a concrete conclusion that the audience can take away. Every decision that you make, in terms of what you do in your demo, needs to support this high level narrative in some way, shape or form. Your audience should never be left wondering 'what was the purpose of the talk?', even if you have to be blunt about it in your conclusion (and in fact, it is recommended).
 
-The high level narrative acts as the [carrier frequency](https://en.wikipedia.org/wiki/Carrier_wave) for the technical content of your demo. You're going to bake the detail into each of the phases of the talk, being very careful not to break the overarching rhythym. Continuing with the wave metaphor, you need to be aware of the peaks and troughs of your talk, as well as where the [inflection points](https://en.wikipedia.org/wiki/Inflection_point) of your narrative are. You will delve into the (likely increasing) layers of complexity in short bursts, and then pause to reinforce the over arching narrative of your talk. This can be as simple as showing the effect of the changed code on the UI, and giving the audience a chance to digest the implication. While it's possible to have a big-bang reveal at the end, it is a delicate balance, because the longer you proceed without an inflection point (pausing), the greater the risk of losing the audience. 
+The high level narrative acts as the [carrier frequency](https://en.wikipedia.org/wiki/Carrier_wave) for the technical content of your demo. You're going to bake the detail into each of the phases of the talk, being very careful not to break the overarching rhythym. Continuing with the wave metaphor, you need to be aware of the peaks and troughs of your talk, as well as where the [inflection points](https://en.wikipedia.org/wiki/Inflection_point) of your narrative are. You will delve into the (likely increasing) layers of complexity in short bursts, and then pause to reinforce the over arching narrative of your talk. This can be as simple as showing the effect of the changed code on the UI, and giving the audience a chance to digest the implication. While it's possible to have a big-bang reveal at the end, it is a delicate balance, because the longer you proceed without an inflection point (pausing), the greater the risk of losing the audience.
 
 > _*Theme:* A contentious, but often important part of the talk is the theme. It's not always necessary, and can sometimes be overdone, but a good theme in a talk will make it more accessible to the audience. This can result in increased engagement, opportunities for humour (which provide easy inflection points), and audience participation. Just be careful, however, that it doesn't dominate the narrative. Finally, be critical of your theme selection and target audience, as some themes can be misconstrued (or be outright insensitive) in different contexts._
-
 
 ### Build a reference application
 
 Once you've decided what the high level narrative is, I recommend building out the end result in its entirety. This will give you a good understanding of the size, shape and complexity over the task - as well as highlight any risky infrastructural areas. (If it's hard to work with while building it, assume that it will break in the demo). It's not uncommon to spend several weeks iterating on this phase, until you're happy that you have a 'thing' that both reinforces the narrative and is feasible to demo. It's also really important to be critical at this stage, and not tied to an idea. If you have any reservations about being able to pull this off, this is the moment to pivot the talk.
 
-Once you're happy with the end result, you should slice up the demo into reasonable size chunks that represent the steps that you will take to achieve that result. This is subjective, and very much dependent on how you're planning on executing ([see below](#different-styles-of-live-coding)), and it's important to remember that *'everything works, some of the time.'* In terms of which direction to break it up, there are many ways that you can go about it, but I favour two approaches: increasing scope/features, or increasing complexity. The former concentrates on adding additional, discrete functionality while the latter builds upon a single implementation by adding layers of complexity. 
+Once you're happy with the end result, you should slice up the demo into reasonable size chunks that represent the steps that you will take to achieve that result. This is subjective, and very much dependent on how you're planning on executing ([see below](#different-styles-of-live-coding)), and it's important to remember that _'everything works, some of the time.'_ In terms of which direction to break it up, there are many ways that you can go about it, but I favour two approaches: increasing scope/features, or increasing complexity. The former concentrates on adding additional, discrete functionality while the latter builds upon a single implementation by adding layers of complexity.
 
 Increasing scope presents considerably less risk, because you can likely bail on a part of the demo that is failing and continue onto the next section. Increasing complexity, however, is inherently additive, so when something goes wrong you may have a situation of cascading failure. All that this means, however, is that your preparation needs to be slightly different for either approach. They are both useful and have different affordances.
 
-By this stage you should having a good idea of the timings between different steps, and be planning how to execute it. It's important to note, that the shorter a step is, the smaller the risk. While it may seem obvious to make the smallest changes possible, this can be very disruptive to the rhythym of the narrative. You're going to need to choose your approach to execution based upon these beats, and remember that you don't have to pick one - you can (and probably should) mix and match a *little* bit. Honestly, this is the hardest part of the preparation. Be critical, and constantly ask yourself the following questions:
+By this stage you should having a good idea of the timings between different steps, and be planning how to execute it. It's important to note, that the shorter a step is, the smaller the risk. While it may seem obvious to make the smallest changes possible, this can be very disruptive to the rhythym of the narrative. You're going to need to choose your approach to execution based upon these beats, and remember that you don't have to pick one - you can (and probably should) mix and match a _little_ bit. Honestly, this is the hardest part of the preparation. Be critical, and constantly ask yourself the following questions:
 
-- *How long is too long?*, 
-- *Can I type this out reliably?*, 
-- *Is this too much code to show at once?*,
-- *If I start running late, what can I speed up? What can I drop entirely?*
+- _How long is too long?_,
+- _Can I type this out reliably?_,
+- _Is this too much code to show at once?_,
+- _If I start running late, what can I speed up? What can I drop entirely?_
 
 ### Different styles of live coding
 
-So we've used the term 'live coding' very broadly, but the reality is that it isn't really a homogenous topic. What *I* imply when I use the term is that code will be produced, executed and demonstrated - not necessarily that the audience will sit and watch you type stuff out (although, again, there is atime and place for that). Here are a few approaches I have seen work, but I'd like you to read the following with two caveats in mind:
+So we've used the term 'live coding' very broadly, but the reality is that it isn't really a homogenous topic. What _I_ imply when I use the term is that code will be produced, executed and demonstrated - not necessarily that the audience will sit and watch you type stuff out (although, again, there is atime and place for that). Here are a few approaches I have seen work, but I'd like you to read the following with two caveats in mind:
 
-1) Everything works, some of the time.
-2) Everything is a tradeoff, where you gain on one hand - you may lose on the other.
+1. Everything works, some of the time.
+2. Everything is a tradeoff, where you gain on one hand - you may lose on the other.
 
-
-#### Hand written 
+#### Hand written
 
 I don't mean literally, like on a whiteboard, but rather typed out from scratch while everyone watches. This is obviously the style that has the greatest inherent risk, and takes the longest. If done properly, however, it can be the most accessible - as people can follow along literally as you work. They can relate directly to the way of working, the tools that you're using, and have the maximum amount of time to digest what you're doing.
-    
+
 #### Copy / Paste
 
 Copy and pasting from a reference document is a legitimate strategy, especially as a back up plan, or for cli commands that are really complicated. It's pretty easy, but there isn't really an elegant way to do it, so whatever works... works. Don't obscure the text by having it super small, or in a hard to read colour scheme. If you're going to copy/paste: **own it**. Let the audience follow along and see what you're doing, and this advice extends to essentially everything here, because this is **all** about the journey and taking the audience with you.
@@ -89,7 +86,7 @@ Tagging major steps of the process in git is, in my opinion, the single best bac
 
 ### Code snippets!
 
-My preferred primary method for live coding is using code snippets, coupled with minimal typing. I use this approach **extensively**, often to the point that I worry about it becoming predictable. The reason why I favour code snippets, is that they are reliable yet unobtrusive. Virtually every text editor has them built in, so the audience is most likely going to intuitively understand what they're doing. They let you produce a useful chunk of code, and then talk through what that code does. In many cases, the snippet will let you script typing points, and can mingle with hand-writing the code **really** well. 
+My preferred primary method for live coding is using code snippets, coupled with minimal typing. I use this approach **extensively**, often to the point that I worry about it becoming predictable. The reason why I favour code snippets, is that they are reliable yet unobtrusive. Virtually every text editor has them built in, so the audience is most likely going to intuitively understand what they're doing. They let you produce a useful chunk of code, and then talk through what that code does. In many cases, the snippet will let you script typing points, and can mingle with hand-writing the code **really** well.
 
 > _Importantly, the **de facto** rules of showing code on slides still apply. Conventional wisdom dictates that you should only show 7 lines of code on a slide, and **if at all possible** you should follow this rule when generating code via a snippet. Don't generate more than 7 lines of code at a time, but rather break it up into successive steps (and therein lies the art)._
 
@@ -99,7 +96,7 @@ In terms of practical advice for designing snippets, I would recommend a few thi
 
 - **Keep it simple:** Seriously, just use it as an accelerator and a substitute for typing. Simple is reliable.
 - **Easy to type:** I have had pretty good success in prefixing all of my snippets with an underscore, and then numbering them sequentially (i.e. `_1`, `_2`, `_12`).
-- **Multiple tabstops:** When you are repeating the same step a lot, such as scaffolding a class, look at using [multiple tabstops](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_tabstops). This works pretty well, and can be used *very* effectively in conjunction with typing out small sections of code.
+- **Multiple tabstops:** When you are repeating the same step a lot, such as scaffolding a class, look at using [multiple tabstops](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_tabstops). This works pretty well, and can be used _very_ effectively in conjunction with typing out small sections of code.
 - **Don't get carried away:** Try and use as few snippets as possible, and if at all possible limit it to ~7 lines of code at a time. Judiciously apply [Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor) and be honest about what you're trying to show, and how you can accomplish that with least effort.
 
 #### Text expansion
@@ -136,11 +133,13 @@ While there is value in resolving a problem and getting the demo on track, one n
 
 ## Examples
 
-- https://github.com/mikegeyser/building-pwas-with-angular
-
+- [State of Houdini(Director’s Cut) by Surma at Chrome Dev Summit 2018](https://www.youtube.com/watch?v=P-oysz0NKCo)
+- [Microfrontends and UI Composition - a Code-First Dive by William Brander at DevConf Poland 2018](https://www.youtube.com/watch?v=2F7_w4PFbb4)
+- [Now, Now-Now, and Just-Now: Building Network Tolerant PWAs by Mike Geyser at DevFest South Africa 2018](https://www.youtube.com/watch?v=RlFz9uAb38A)
 
 ## Conclusion
 
-Hm?
+
+Sure, there are times when live coding can be a hot mess. Despite the best plans, preparations, and precautions - the [demo gods]() may simply not have looked favourably upon you. At those points, it's important to remember that the live coding isn't an end unto itself, but is rather a mechanism to reinforce the narrative of your talk.
 
 Remember the purpose of live-coding is not the code itself, but i
