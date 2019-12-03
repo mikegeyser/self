@@ -1,7 +1,11 @@
 ---
 layout: base.njk
 ---
-<h1>{{ title }}</h1>
+<h1>
+    <rough-underline>
+        {{ title }}
+    </rough-underline>
+</h1>
 <time datetime="{{date}}">Originally written on {{ date | readableDate }}. Revised on {{revised | readableDate}}.</time>
 
 {{ content | safe }}
