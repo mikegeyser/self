@@ -7,5 +7,6 @@
   "prettier.singleQuote": true,
   "prettier.arrowParens": "always",
   "prettier.printWidth": 120,
-  "lit-html.format.enabled": false
+  "lit-html.format.enabled": false,
+  "cSpell.enabledLanguageIds": ["markdown", "plaintext"]
 }
