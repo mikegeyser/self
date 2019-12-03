@@ -52,6 +52,14 @@ h2 > a {
   text-decoration: none;
 }
 
+h3 {
+  font-size: 20pt;
+}
+
+h4 {
+  font-size: 18pt;
+}
+
 @media (max-width: 460px) {
   .container > h1 {
     font-size: 24pt;
@@ -191,6 +199,9 @@ section > * {
   background: rgb(247,247,247);
 } */
 
+strong {
+  font-weight: bold;
+}
 /* Footer*/
 footer {
   display: block;

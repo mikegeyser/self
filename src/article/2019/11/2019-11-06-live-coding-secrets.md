@@ -8,15 +8,11 @@ description: I really enjoy both delivering and watching live coding talks. Sure
 
 Live coding makes both speakers and conference organisers nervous.
 
-I mean, who would blame them, there are so many examples of high profile live coding failures. They take a lot of careful consideration, planning and preparation - and there is _so_ much that can go wrong in execution. Everyone has been at one of those talks where the speaker flounders through a live demo, and is as relieved as the audience when it ends.
+I mean, who would blame them, there are so many examples of high profile live coding failures. They take a lot of careful consideration, planning and preparation - and there is _so_ much that can go wrong in execution. Everyone has been at one of those talks where the speaker flounders through a demo, and is as relieved as the audience when it ends.
 
 Despite all of this, or perhaps because of it, I really enjoy both delivering and watching live coding talks. Sure, there are some rough ones every now and then, but overall I find that there's a lot of value to be gained in watching and understanding how someone else goes about coding. Sure, you can show code on slides, but that isn't really _how_ you code. It is out of context, unnatural, and seldom builds a meaningful connection between the audience and what you want them to learn. So, sure there are risks, but they can be mitigated. The sense of connection to the crowd, the engagement, the suspension of disbelief and the motivational factor all make live-coding truly rewarding.
 
 > _Please, if you feel that live coding isn't your 'thing', that's completely ok. I'm not here to invalidate your experience, and your presentation will still be incredibly valuable. This just serves more as a record of my learnings, in trying many (many) different things while live coding._
-
-- Examples of high profile failures
-  - Surma at CDS
-  - Rich Harris on Svelte at... New York somewhere?
 
 ## Why would I even?
 
@@ -24,7 +20,7 @@ Despite all of this, or perhaps because of it, I really enjoy both delivering an
 
 For almost everyone that talks about development topics, coding is "Job #1". It's literally the thing we do all day, every day. So, It shouldn't be a big surprise that not only are we good at it, we feel most comfortable while writing code. I have seen many nervous speakers settle into a talk as soon as they open an editor. It's as if you're no longer standing in front of 100's of people and rather back at your desk explaining to some curious onlookers about how you built that awesome thing.
 
-// TODO: Add a paragraph on relating to the audience.
+For the audience, if they're attending a technical talk, it's likely that coding is their core skill set. Think about code as the lowest common denominator between you and them. I mean, there may be more. You may share some culture, background, language or geography with some of the audience - but likely not all of them. The way that you present information, even something as objective as data, is inherently loaded with some of your own context and bias. Spoken language is renowned for being ambiguous, but programming languages are, by definition, objective and rigorous. Sure, this problem doesn't entirely disappear, and it assumes a shared understanding of the capabilities of a given programming language - but I believe that it does mitigate it.
 
 ### Suspension of disbelief
 
@@ -38,7 +34,7 @@ This means that live coding can be a very compelling way to illustrate implement
 
 Let's be real, there is a lot that can go wrong; some of it you can control, but much of it you can't. Just because you can't control it, doesn't mean that you can't prepare for the eventuality, and turn a bad situation into an amazing talk. The rest of this article will essentially concentrate on preparation and execution.
 
-> I would like to call out the single hardest factor to control: the audience. Many a good talk has struggled to land, purely because the wrong audience was sitting in the room. At smaller, or more specialised conferences, this may not be a concern, but at the larger developer events it is a real problem. You're likely going to speak at a an audience of wildly different backgrounds and levels of expertise, and it's something you're going to have to prepare for.
+> _I would like to call out the single hardest factor to control: the audience. Many a good talk has struggled to land, purely because the wrong audience was sitting in the room. At smaller, or more specialised conferences, this may not be a concern, but at the larger developer events it is a real problem. You're likely going to speak at a an audience of wildly different backgrounds and levels of expertise, and it's something you're going to have to prepare for._
 
 ## Preparation - there can never be too much
 
@@ -82,7 +78,7 @@ Copy and pasting from a reference document is a legitimate strategy, especially 
 
 ### Git tags
 
-Tagging major steps of the process in git is, in my opinion, the single best backup plan. I recommend them, because you will have a 'safe point' that you can (almost) objectively guarantee will work. I have seen people take this even further by using tags as the primary mechanism for the demo, by explaining to the audience what the changes are, and how they work. I recall a particular demo, that unfortunately wasn't recorded, where the speaker had forward/backward shortcuts on their toolbar/dock and could just click them and the code files would update incrementally. It actually worked incredibly well, but I've never experimented with it.1
+Tagging major steps of the process in git is, in my opinion, the single best backup plan. I recommend them, because you will have a 'safe point' that you can (almost) objectively guarantee will work. I have seen people take this even further by using tags as the primary mechanism for the demo, by explaining to the audience what the changes are, and how they work. I recall a particular demo, that unfortunately wasn't recorded, where the speaker had forward/backward shortcuts on their toolbar/dock and could just click them and the code files would update incrementally. It actually worked incredibly well, but I've never experimented with it.
 
 ### Code snippets!
 
@@ -133,13 +129,10 @@ While there is value in resolving a problem and getting the demo on track, one n
 
 ## Examples
 
-- [State of Houdini(Director’s Cut) by Surma at Chrome Dev Summit 2018](https://www.youtube.com/watch?v=P-oysz0NKCo)
-- [Microfrontends and UI Composition - a Code-First Dive by William Brander at DevConf Poland 2018](https://www.youtube.com/watch?v=2F7_w4PFbb4)
-- [Now, Now-Now, and Just-Now: Building Network Tolerant PWAs by Mike Geyser at DevFest South Africa 2018](https://www.youtube.com/watch?v=RlFz9uAb38A)
+- [State of Houdini(Director’s Cut)](https://www.youtube.com/watch?v=P-oysz0NKCo) by Surma at Chrome Dev Summit 2018.
+- [Microfrontends and UI Composition - a Code-First Dive](https://www.youtube.com/watch?v=2F7_w4PFbb4) by William Brander at DevConf Poland 2018.
+- [Now, Now-Now, and Just-Now: Building Network Tolerant PWAs](https://www.youtube.com/watch?v=RlFz9uAb38A) by Mike Geyser at DevFest South Africa 2018. 
 
 ## Conclusion
 
-
-Sure, there are times when live coding can be a hot mess. Despite the best plans, preparations, and precautions - the [demo gods]() may simply not have looked favourably upon you. At those points, it's important to remember that the live coding isn't an end unto itself, but is rather a mechanism to reinforce the narrative of your talk.
-
-Remember the purpose of live-coding is not the code itself, but i
+Sure, there are times when live coding can be a hot mess. Despite the best plans, preparations, and precautions - the [demo gods](https://twitter.com/demogods) may not have looked favourably upon you. At those points, it's important to remember that the live coding isn't an end unto itself, but is rather a mechanism to reinforce the narrative of your talk. The code exists to establish connection with the audience, to encourage them to suspend their disbelief, and to underscore the message that you're trying to convey. If used effectively, I would argue there is no better way to communicate technical content, and something I find immensely enjoyable and rewarding. 
