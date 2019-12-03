@@ -1,6 +1,6 @@
 ---
-date: 2019-11-06
-revised: 2019-11-09
+date: 2019-12-03
+revised: 2019-12-03
 title: Secrets of live coding
 key: live-coding-secrets
 description: I really enjoy both delivering and watching live coding talks. Sure, there are some rough ones every now and then, but overall I find that there's a lot of value to be gained in watching and understanding how someone else goes about coding. The sense of connection to the crowd, the engagement, the suspension of disbelief and the motivational factor all make live-coding truly rewarding.
