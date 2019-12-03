@@ -121,7 +121,7 @@ nav a {
     --tappable-height: 42px;
     width: 100%;
     height: auto;
-    border-bottom: 1px solid var(--lightgray);
+    /* border-bottom: 1px solid var(--lightgray); */
   }
   
   nav {
