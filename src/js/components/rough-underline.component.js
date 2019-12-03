@@ -44,7 +44,7 @@ class RoughUnderline extends LitElement {
         bowing: 5,
         strokeWidth: 8
       });
-    }, 1);
+    }, 100);
   }
 }
 
