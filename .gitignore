@@ -3,3 +3,6 @@ node_modules/
 package-lock.json
 build/
 .firebase/
+.webmentions/
+**/.DS_Store
+.env

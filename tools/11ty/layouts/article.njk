@@ -1,12 +1,17 @@
 ---
 layout: base.njk
 ---
+{% block head %}
+<link rel="stylesheet" href="/css/webmentions.css">
+{% endblock %}
+
 <h1>
-    <rough-underline>
-        {{ title }}
-    </rough-underline>
+  <rough-underline>
+    {{ title }}
+  </rough-underline>
 </h1>
 <time datetime="{{date}}">Originally written on {{ date | readableDate }}. Revised on {{revised | readableDate}}.</time>
 
 {{ content | safe }}
 
+{% include "webmentions.njk" %}

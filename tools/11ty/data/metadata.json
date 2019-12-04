@@ -1,6 +1,7 @@
 {
   "title": "// mikerambl.es",
   "url": "https://mikerambl.es/",
+  "domain": "mikerambl.es",
   "description": "A place where I ramble about JavaScript and the Web.",
   "feed": {
     "subtitle": "",

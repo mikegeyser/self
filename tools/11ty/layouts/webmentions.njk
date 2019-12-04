@@ -1,0 +1,29 @@
+{%- set absoluteUrl -%}{{ page.url | url | absoluteUrl(metadata.url) }}{%- endset -%}
+{%- set mentions = webmentions.children | webmentionsForUrl(absoluteUrl) -%}
+
+{% if mentions | length %}
+  <div class="webmentions" id="webmentions">
+    <h3>
+      <rough-underline>
+        Join the conversation
+      </rough-underline>
+    </h3>
+    <div class="webmentions__facepile">
+      {% for webmention in mentions | reverse | head(10) %}
+        <img loading="lazy" src="{% if webmention.author.photo %}{{ webmention.author.photo }}{% else %}{{ '/img/webmention-avatar-default.svg' | url }}{% endif %}" title="{{ webmention.author.name }}" alt="" class="webmentions__face"/>
+      {% endfor %}
+      {% if mentions.length > 10 %}
+        <span>+{{ mentions.length - 10 }}
+          more</span>
+      {% endif %}
+    </div>
+
+    <ol class="webmentions__list">
+      {% for webmention in mentions | webmentionsByType('in-reply-to', 'mention-of') | reverse %}
+        <li class="webmentions__item">
+          {% include 'webmention.njk' %}
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endif %}
