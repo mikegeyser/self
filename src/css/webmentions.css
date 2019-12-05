@@ -1,0 +1,79 @@
+/* Webmention Section */
+.webmentions {
+  display: block;
+  text-align: left;
+  margin-top: 5em;
+}
+
+.webmentions .facepile {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.webmentions img.face {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.webmentions .facepile span {
+  margin-left: 0.5rem;
+}
+
+.webmentions ol {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 3em;
+}
+
+.webmentions ol li {
+  margin-bottom: 2rem;
+}
+
+/* Single Webmention */
+.webmention {
+  display: block;
+}
+
+.webmention .meta,
+.webmention .author {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.webmention .meta {
+  margin-bottom: 0.5rem;
+}
+
+.webmention .author {
+  margin-right: 0.25rem;
+  text-decoration: none;
+  color: inherit;
+  font-size: 18pt;
+  font-family: var(--accent-font);
+}
+
+.webmention .author .photo {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.5rem;
+}
+
+.webmention .pubdate {
+  display: block;
+  font-style: italic;
+  font-size: 12pt;
+  margin-top: -2em;
+  margin-left: 3em;
+}
+
+.webmention .content {
+  margin-top: 0.5rem;
+  margin-left: 2.75em;
+}
