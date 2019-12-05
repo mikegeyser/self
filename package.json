@@ -5,6 +5,10 @@
   "scripts": {
     "start": "npm-run-all --parallel dev:*",
     "build": "NODE_ENV=production npm-run-all prod:*",
+    "deploy": "NODE_ENV=production firebase deploy --token \"$FIREBASE_TOKEN\"",
+    "ci": "npm-run-all ci:*",
+    "ci:build": "yarn build",
+    "ci:deploy": "yarn deploy",
     "dev:del": "rm -rf build",
     "dev:webpack": "webpack --config ./tools/webpack/webpack.config.js --watch",
     "dev:11ty": "ELEVENTY_ENV=development eleventy --config=./tools/11ty/11ty.config.js --serve",
