@@ -10,15 +10,27 @@ const webmentionsForUrl = (webmentions, url) => {
       }
     });
 
-  return webmentions
-    .filter(entry => entry["wm-target"] === url)
+  const allMentionsForUrl = webmentions.filter(
+    entry => entry["wm-target"] === url
+  );
+
+  const relevantMentions = allMentionsForUrl
     .filter(entry => allowedTypes.includes(entry["wm-property"]))
-    .filter(entry => !!entry.content)
     .map(entry => {
-      const { html, text } = entry.content;
-      entry.content.value = html ? clean(html) : clean(text);
+      if (entry.content) {
+        const { html, text } = entry.content;
+        entry.content.value = html ? clean(html) : clean(text);
+      }
       return entry;
     });
+
+  console.info("Webmentions: ", {
+    url,
+    allMentionsForUrl: allMentionsForUrl.length,
+    relevantMentions: relevantMentions.length
+  });
+
+  return relevantMentions;
 };
 
 module.exports = webmentionsForUrl;
