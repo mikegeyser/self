@@ -16,7 +16,8 @@ module.exports = function(eleventyConfig) {
     "htmlDateString",
     "webmentionsForUrl",
     "webmentionsByType",
-    "head"
+    "head",
+    "distinctWebmentionAuthors"
   ];
   for (const filter of filters) {
     eleventyConfig.addFilter(filter, require(`./filters/${filter}`));
