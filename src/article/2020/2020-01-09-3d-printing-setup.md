@@ -1,12 +1,15 @@
 ---
 date: 2020-01-09
 revised: 2020-02-01
-title: 3D Printing Setup
+title: Something about 3d printing - Part 1
 key: 3d-printing-setup
+draft: true
 description: 
 ---
 
-// Todo: snazzy intro thingy
+The most important lesson I have learnt from 3d printing is that 'failure is part of the process'. And, I mean, I'm a programmer so I'm not unaccustomed to the idea of things going wrong, and it's a common enough idiom in the context of developing software. It's normal for things to be somewhere along the spectrum of working / completed / correct. It's just that 3d printing, that has become a part of the philosophy. You are required to embrace it. There are too many variables to control, the system is constantly in flux, and things *will* go wrong. Instead, the process requires you to embrace this. Take small steps. Experiment. Learn from your mistakes. It's been a very humbling, and dare I say character-building, experience that has become more than just a hobby, but rather a part of my identity.
+
+I started writing this article in January of 2020, in a period of significant change. It very quickly grew hugely in scope, because it was a personal topic that I was incredibly excited about, and then... Well, y'know. 2020 happened.
 
 ## The Hardware
 
@@ -100,19 +103,6 @@ It did, however, generate *really* good support structures. So that's a plus.
 ### ThingiVerse
 
 ### Blender
-
-
-## Troubleshooting
-
-## // TODO
-
-### Upgrade Marlin
-
-### BLTouch Auto-levelling
-
-### Ratcheting spool holder
-
-### SLS Resin Printer
 
 ## Conclusion
 

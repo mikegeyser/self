@@ -6,16 +6,18 @@ navtitle: Articles
 ---
 
 {% for article in collections.articles | reverse %}
-  <section>
-    <article>
-      <h2>
-        <rough-underline>
-          <a href="/article/{{article.data.key}}">{{article.data.title}}</a>
-        </rough-underline>
-      </h2>
-      <div>{{ article.date | readableDate }}</div>
-      <p>{{ article.data.description }}</p>
-      <a href="/article/{{article.data.key}}">Read more...</a>
-    </article>
-  </section>
+  {% if not article.data.draft %}
+    <section>
+      <article>
+        <h2>
+          <rough-underline>
+            <a href="/article/{{article.data.key}}">{{article.data.title}}</a>
+          </rough-underline>
+        </h2>
+        <div>{{ article.date | readableDate }}</div>
+        <p>{{ article.data.description }}</p>
+        <a href="/article/{{article.data.key}}">Read more...</a>
+      </article>
+    </section>
+  {% endif %}
 {% endfor %}
