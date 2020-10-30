@@ -11,7 +11,7 @@ navtitle: Home
 {% endblock %}
 
 <div class="container">
-  <profile-picture></profile-picture>
+  <profile-picture>{{ profile_picture | safe }}</profile-picture>
 
   <h1 class="rough-underline">Hi, I'm Mike!</h1>
   <div class="paragraph">

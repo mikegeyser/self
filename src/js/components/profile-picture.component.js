@@ -1,5 +1,4 @@
 import { html, LitElement } from 'lit-element';
-import { profilePicture } from './svg-pictures.js';
 
 let styles = html`
   <style>
@@ -35,7 +34,7 @@ class ProfilePicture extends LitElement {
       ${styles}
 
       <div id="profile-picture" class="profile-picture">
-        ${profilePicture}
+        <slot></slot>
       </div>
     `;
   }
@@ -52,7 +51,7 @@ class ProfilePicture extends LitElement {
 
     img.onload = () => {
       const parent = this.shadowRoot.getElementById('profile-picture');
-      const placeholder = parent.getElementsByTagName('svg')[0];
+      const placeholder = parent.querySelector('slot');
       placeholder.style.opacity = '0';
       setTimeout((_) => placeholder.remove(), 500);
 
