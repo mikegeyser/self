@@ -3,10 +3,7 @@ const path = require('path');
 
 const devServer = require('./dev-server.config');
 const babel = require('./babel.config');
-const css_loader = require('./css-loader.config');
-const entry_points = require('./entry-points.config');
 const copy = require('./copy.config');
-const workbox = require('./workbox.config');
 
 const base = {
   mode: 'production',
